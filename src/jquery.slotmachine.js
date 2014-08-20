@@ -296,9 +296,9 @@
 				
 				//delay /= 2;
                                 delay *=2;
-                                if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-                                    delay *=20;
-                                }
+                                //if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+                                //    delay *=20;
+                                //}
                                 
 				//Perform animation
 				$container.animate({
