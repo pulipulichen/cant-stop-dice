@@ -483,7 +483,7 @@
 		
 		//Set min top offset
 		_minTop = -_$fakeFirstTitle.outerHeight();
-		
+                
 		//Show active element
 		$container.css("margin-top", _getOffset(self.settings.active) );
 		

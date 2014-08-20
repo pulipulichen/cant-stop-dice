@@ -1,5 +1,49 @@
 $(function(){
 
+    var _is_mobile = function () {
+        if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    };
+    
+    var _fix_layout = function () {
+        var _total_height = window.innerHeight;
+        
+        //if (_is_mobile()) {
+        //    _total_height = _total_height - 50;
+        //}
+        
+        $(".slot-group").height(_total_height);
+        //var _height = $(".slot-group").height();
+        //$(".slot-group").css("margin-top", "-" + (_height/2) + "px");
+        
+        var _max_width = $(".slot-group .slot-subgroup:first").width();
+        var _max_height = $("td:first").height() - $(".slot-machine-score:first").height();
+        
+        //alert([_max_width, _max_height]);
+        
+        var _size = _max_width;
+        if (_size > _max_height) {
+            _size = _max_height;
+        }
+        _size = parseInt(((_size / 2) - 10), 10);
+        
+        $(".slotMachine, .slotMachine .slot")
+                .css("width", _size + "px")
+                .css("height", _size + "px");
+        $(".slotMachineContainer").css("margin-top", "-" + _size + "px");
+    };
+    _fix_layout();
+    
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) === false) {
+        $(window).resize(_fix_layout);
+    }
+    //$(window).resize(_fix_layout);
+        
+
     var _setup_slot_machine = function (_slot_group) {
         
         if (typeof(_slot_group) === "string") {
@@ -61,7 +105,7 @@ $(function(){
         var _start_callback = function(){
             
             var _random = parseInt(Math.random() * 50, 10);
-            console.log(_random);
+            //console.log(_random);
             var _interval = 75 + _random;
             
             if (_start_flag === 0) {
@@ -102,17 +146,9 @@ $(function(){
         _slot_group.click(_start_callback);
     };  //var _setup_slot_machine = function (_slot_group) {
     
-    _setup_slot_machine("body");
+    //setTimeout(function () {
+        _setup_slot_machine("body");
+    //}, 1000);
     
-    var _fix_layout = function () {
-        var _total_height = window.innerHeight;
-        
-        $(".slot-group").height(_total_height);
-        //var _height = $(".slot-group").height();
-        //$(".slot-group").css("margin-top", "-" + (_height/2) + "px");
-    };
-    _fix_layout();
     
-    $(window).resize(_fix_layout);
-        
 });

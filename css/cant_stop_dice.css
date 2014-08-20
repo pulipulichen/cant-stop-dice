@@ -43,7 +43,6 @@ body {
     
     position: absolute;
     top: 0;
-    
     /*margin-top: -(Y/2)u;*/
     /*
     width: Xu;
@@ -95,7 +94,10 @@ body {
     cursor: pointer;
     /*float:left;*/
     display: inline-block;
-    margin-right: 30px;
+    margin-right: 2%;
+    
+    width: 48%;
+    /*border: 1px solid red;*/
     
     /*display: table-cell;*/
 }
@@ -119,21 +121,26 @@ body {
     text-shadow: 2px 2px rgba(100%,100%,100%,0.5);
 }
 
+.dice-default .slot {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
 .dice-default .slot1{
-	background-image: url("../img/dice_default_1.png");
+    background-image: url("../img/dice_default_1.png");
 }
 .dice-default .slot2{
-	background-image: url("../img/dice_default_2.png");
+    background-image: url("../img/dice_default_2.png");
 }
 .dice-default .slot3{
-	background-image: url("../img/dice_default_3.png");
+    background-image: url("../img/dice_default_3.png");
 }
 .dice-default .slot4{
-	background-image: url("../img/dice_default_4.png");
+    background-image: url("../img/dice_default_4.png");
 }
 .dice-default .slot5{
-	background-image: url("../img/dice_default_5.png");
+    background-image: url("../img/dice_default_5.png");
 }
 .dice-default .slot6{
-	background-image: url("../img/dice_default_6.png");
+    background-image: url("../img/dice_default_6.png");
 }

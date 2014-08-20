@@ -252,20 +252,21 @@ p.title{
 	top:1px;
 }
 
+.slotMachine,
+.slotMachine .slot {
+    width:100px;
+    height:100px;
+    max-height: 100%;
+}
+
 .slotMachine{
-	width:100px;
-	height: 100px;
 	overflow: hidden;
 	display: inline-block;
 	text-align: center;
-	border: 0px solid #FFF;
+	border: 0px solid red;
 	/*background-color: #ffffff;*/
 }
 .noBorder{
 	border:none !important;
 	background: transparent !important;
-}
-.slotMachine .slot{
-	width:100px;
-	height:100px;
 }
