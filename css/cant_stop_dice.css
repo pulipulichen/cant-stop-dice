@@ -58,16 +58,29 @@ body {
 .slot-group tr {
     height: 33%;
     border-top: 5px rgba(100%, 100%, 100%, 0.6) dotted;
-    
     text-align: center;
+}
+
+.landscape .slot-group tr {
+    height: 100%;
+    width: 32%;
+    border-top-width: 0px;
+    border-left: 5px rgba(100%, 100%, 100%, 0.6) dotted;
+    display: table-cell;
+    vertical-align:middle;
 }
 
 .slot-group tr:first-of-type {
     border-top-width: 0px;
+    border-left-width: 0px;
 }
 
 .slot-group tr td {
     vertical-align: middle;
+}
+
+.landscape .slot-group tr td {
+    display: block;
 }
 
 .slot-select {
@@ -103,6 +116,12 @@ body {
 }
 .slot-subgroup:last-of-type {
     margin-right: 0px;
+    margin-top: 0px;
+}
+
+.landscape .slot-subgroup {
+    width: 95%;
+    margin-top: 5%;
 }
 
 .slot-machine-score {

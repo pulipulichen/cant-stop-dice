@@ -117,6 +117,14 @@ var _setup_slot_machine = function (_slot_group) {
     
     var _fix_layout = function () {
         var _total_height = window.innerHeight;
+        var _total_width = window.innerWidth;
+        
+        if (_total_width > _total_height) {
+            $("body").addClass("landscape");
+        }
+        else {
+            $("body").removeClass("landscape");
+        }
         
         //if (_is_mobile()) {
         //    _total_height = _total_height - 50;
