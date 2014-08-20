@@ -133,6 +133,9 @@
 			for(var i=0; i<index; i++){
 				offset += $( $titles.get(i) ).outerHeight();
 			}
+                        
+                        _minTop = -_$fakeFirstTitle.outerHeight();
+                        console.log(["_getOffset", _minTop]);
 			return -offset + _minTop;
 		}
 		
@@ -483,6 +486,7 @@
 		
 		//Set min top offset
 		_minTop = -_$fakeFirstTitle.outerHeight();
+                console.log(["first", _minTop]);
                 
 		//Show active element
 		$container.css("margin-top", _getOffset(self.settings.active) );
