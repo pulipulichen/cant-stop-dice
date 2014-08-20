@@ -40,10 +40,20 @@ $(function(){
         };
 
         var _results = _slot_group.find(".slot-machine-score");
+        _results.text("?");
         var _reset_score = function () {
-            _results
-                .removeClass("complete")
-                .text("?");
+            _results.each(function (_i, _e) {
+                _e = $(_e);
+                _e.removeClass("complete");
+                
+                if (_e.text() !== "?") {
+                    _e.fadeOut("fast", function () {
+                        _e.text("?");
+                        _e.fadeIn("fast");
+                    });
+                }
+                //_e.text("?");
+            });
         };
         _reset_score();
 
@@ -93,4 +103,16 @@ $(function(){
     };  //var _setup_slot_machine = function (_slot_group) {
     
     _setup_slot_machine("body");
+    
+    var _fix_layout = function () {
+        var _total_height = window.innerHeight;
+        
+        $(".slot-group").height(_total_height);
+        //var _height = $(".slot-group").height();
+        //$(".slot-group").css("margin-top", "-" + (_height/2) + "px");
+    };
+    _fix_layout();
+    
+    $(window).resize(_fix_layout);
+        
 });

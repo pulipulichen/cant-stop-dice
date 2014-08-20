@@ -1,12 +1,79 @@
 
 body {
     background-image: url(../img/bg.jpg);
-    cursor: pointer;
+    /*
+    display: table;
+    */
+    /*
+    height: 100%;
+    border: 1px solid red;
+    */
 }
 
 .slot-group {
     width: 100%;
+    /*
+    display: table-cell;
+    height: 100%;
+    vertical-align: middle;
+    */
+    /*
+    width: Xu;
+    height: Yu;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -(X/2)u;
+    margin-top: -(Y/2)u;
+    */
+    
+    position: absolute;
+    top: 0;
+    
+    /*margin-top: -(Y/2)u;*/
+    /*
+    width: Xu;
+    height: Yu;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -(X/2)u;
+    margin-top: -(Y/2)u;
+    */
 }
+
+.slot-group tr {
+    height: 33%;
+    border-top: 5px rgba(100%, 100%, 100%, 0.6) dotted;
+    
+    text-align: center;
+}
+
+.slot-group tr:first-of-type {
+    border-top-width: 0px;
+}
+
+.slot-group tr td {
+    vertical-align: middle;
+}
+
+.slot-select {
+    /*
+    clear: both;
+    border-top: 5px rgba(100%, 100%, 100%, 0.6) dotted;
+    padding-top: 5px;
+    margin-top: 5px;
+    text-align: center;
+    */
+    /*display: table-row;*/
+}
+
+/*
+.slot-select:first-of-type {
+    border-top-width: 0px;
+    margin-top: 0px;
+}
+*/
 
 .slot-subgroup {
     text-align: center;
@@ -15,31 +82,27 @@ body {
     /*float:left;*/
     display: inline-block;
     margin-right: 30px;
+    
+    /*display: table-cell;*/
 }
 .slot-subgroup:last-of-type {
     margin-right: 0px;
 }
 
-.slot-select {
-    clear: both;
-    border-top: 5px rgba(100%, 100%, 100%, 0.6) dotted;
-    padding-top: 5px;
-    margin-top: 5px;
-    text-align: center;
-}
-
-.slot-select:first-of-type {
-    border-top-width: 0px;
-    margin-top: 0px;
-}
-
 .slot-machine-score {
     font-size: 36pt;
     color: #333;
+    font-family: Maggie-Moo;
+}
+
+@font-face {
+    font-family: Maggie-Moo;
+    src: url(../font/Maggie-Moo.otf);
 }
 
 .slot-machine-score.complete {
-    color: red;
+    color: black;
+    text-shadow: 2px 2px rgba(100%,100%,100%,0.5);
 }
 
 .dice-default .slot1{
