@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>jQuery Slot Machine</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=2.0">
+
+		<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+
+		<script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="dist/jquery.slotmachine.min.js"></script>
+
+	</head>
+
+	<body>
+
+<!-- Slot Group -->
+<div class="line slot-group">
+			
+<div class="content" style="text-align: center">
+				
+<div style="clear:both;">
+    <div class="slotMachine machine1">
+            <div class="slot slot1"></div>
+            <div class="slot slot2"></div>
+            <div class="slot slot3"></div>
+            <div class="slot slot4"></div>
+            <div class="slot slot5"></div>
+            <div class="slot slot6"></div>
+    </div>
+
+    <div class="slotMachine machine2">
+            <div class="slot slot1"></div>
+            <div class="slot slot2"></div>
+            <div class="slot slot3"></div>
+            <div class="slot slot4"></div>
+            <div class="slot slot5"></div>
+            <div class="slot slot6"></div>
+    </div>
+
+    <div class="slotMachineButton">GO!</div>
+    
+    <div style="clear:both;">
+        <div class="slotMachine-score"></div>
+    </div>
+</div>
+
+				
+			</div>
+		</div>
+<!-- /Slot Group -->
+		
+
+<script>
+$(function(){
+    
+    var _slot_group = $(".slot-group");
+
+    var machine1 = _slot_group.find(".machine1").slotMachine({
+            active	: 0,
+            delay	: 100
+    });
+
+    var machine2 = _slot_group.find(".machine2").slotMachine({
+            active	: 1,
+            delay	: 100
+    });
+
+    var _score = 0;
+    var _score_result = _slot_group.find(".slotMachine-score");
+    var _onComplete = function ($el, active){
+        //alert($el[0].className);
+        var _classname = $el[0].className;
+        _score = _score + active.index + 1;
+        if (_classname.indexOf("machine2")) {
+            _score_result.text(_score);
+        }
+    };
+
+    var _start_callback = function(){
+
+        _score = 0;
+        _score_result.empty();
+        machine1.shuffle(5, _onComplete);
+
+        setTimeout(function(){
+                machine2.shuffle(5, _onComplete);
+        }, 100);
+
+    };
+
+    _slot_group.find(".slotMachineButton").click(_start_callback);
+    //$("#slotMachineButton1").click(_start_callback);
+});
+</script>
+
+	</body>
+</html>
