@@ -17,7 +17,7 @@
 	<body>
 
 <!-- Slot Group -->
-<div class="line slot-group">
+<div class="line slot-subgroup">
 			
 <div class="content" style="text-align: center">
 				
@@ -39,9 +39,9 @@
             <div class="slot slot5"></div>
             <div class="slot slot6"></div>
     </div>
-
+    <!--
     <div class="slotMachineButton">GO!</div>
-    
+    -->
     <div style="clear:both;">
         <div class="slotMachine-score"></div>
     </div>
@@ -56,7 +56,7 @@
 <script>
 $(function(){
     
-    var _slot_group = $(".slot-group");
+    var _slot_group = $(".slot-subgroup");
 
     var machine1 = _slot_group.find(".machine1").slotMachine({
             active	: 0,
@@ -91,7 +91,7 @@ $(function(){
 
     };
 
-    _slot_group.find(".slotMachineButton").click(_start_callback);
+    _slot_group.click(_start_callback);
     //$("#slotMachineButton1").click(_start_callback);
 });
 </script>
