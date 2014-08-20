@@ -35,6 +35,11 @@ body {
 
 .slot-machine-score {
     font-size: 36pt;
+    color: #333;
+}
+
+.slot-machine-score.complete {
+    color: red;
 }
 
 .dice-default .slot1{
