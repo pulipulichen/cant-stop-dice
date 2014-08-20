@@ -8,6 +8,7 @@
 
 		<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
+                <link rel="stylesheet" href="css/cant_stop_dice.css" type="text/css" media="screen" />
 
 		<script type="text/javascript" src="//code.jquery.com/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="dist/jquery.slotmachine.min.js"></script>
@@ -17,12 +18,8 @@
 	<body>
 
 <!-- Slot Group -->
-<div class="line slot-subgroup">
-			
-<div class="content" style="text-align: center">
-				
-<div style="clear:both;">
-    <div class="slotMachine machine1">
+<div class="slot-subgroup">
+    <div class="slotMachine dice-default">
             <div class="slot slot1"></div>
             <div class="slot slot2"></div>
             <div class="slot slot3"></div>
@@ -31,7 +28,52 @@
             <div class="slot slot6"></div>
     </div>
 
-    <div class="slotMachine machine2">
+    <div class="slotMachine dice-default">
+            <div class="slot slot1"></div>
+            <div class="slot slot2"></div>
+            <div class="slot slot3"></div>
+            <div class="slot slot4"></div>
+            <div class="slot slot5"></div>
+            <div class="slot slot6"></div>
+    </div>
+    
+    <div class="slotMachine dice-default">
+            <div class="slot slot1"></div>
+            <div class="slot slot2"></div>
+            <div class="slot slot3"></div>
+            <div class="slot slot4"></div>
+            <div class="slot slot5"></div>
+            <div class="slot slot6"></div>
+    </div>
+    
+    <div class="slotMachine dice-default">
+            <div class="slot slot1"></div>
+            <div class="slot slot2"></div>
+            <div class="slot slot3"></div>
+            <div class="slot slot4"></div>
+            <div class="slot slot5"></div>
+            <div class="slot slot6"></div>
+    </div>
+    
+    <div class="slotMachine dice-default">
+            <div class="slot slot1"></div>
+            <div class="slot slot2"></div>
+            <div class="slot slot3"></div>
+            <div class="slot slot4"></div>
+            <div class="slot slot5"></div>
+            <div class="slot slot6"></div>
+    </div>
+    
+    <div class="slotMachine dice-default">
+            <div class="slot slot1"></div>
+            <div class="slot slot2"></div>
+            <div class="slot slot3"></div>
+            <div class="slot slot4"></div>
+            <div class="slot slot5"></div>
+            <div class="slot slot6"></div>
+    </div>
+    
+    <div class="slotMachine dice-default">
             <div class="slot slot1"></div>
             <div class="slot slot2"></div>
             <div class="slot slot3"></div>
@@ -42,59 +84,13 @@
     <!--
     <div class="slotMachineButton">GO!</div>
     -->
-    <div style="clear:both;">
-        <div class="slotMachine-score"></div>
-    </div>
-</div>
+    <div class="slot-machine-score"></div>
 
-				
-			</div>
-		</div>
+</div>
 <!-- /Slot Group -->
 		
 
-<script>
-$(function(){
-    
-    var _slot_group = $(".slot-subgroup");
-
-    var machine1 = _slot_group.find(".machine1").slotMachine({
-            active	: 0,
-            delay	: 100
-    });
-
-    var machine2 = _slot_group.find(".machine2").slotMachine({
-            active	: 1,
-            delay	: 100
-    });
-
-    var _score = 0;
-    var _score_result = _slot_group.find(".slotMachine-score");
-    var _onComplete = function ($el, active){
-        //alert($el[0].className);
-        var _classname = $el[0].className;
-        _score = _score + active.index + 1;
-        if (_classname.indexOf("machine2")) {
-            _score_result.text(_score);
-        }
-    };
-
-    var _start_callback = function(){
-
-        _score = 0;
-        _score_result.empty();
-        machine1.shuffle(5, _onComplete);
-
-        setTimeout(function(){
-                machine2.shuffle(5, _onComplete);
-        }, 100);
-
-    };
-
-    _slot_group.click(_start_callback);
-    //$("#slotMachineButton1").click(_start_callback);
-});
-</script>
+<script src="setup_slot_machine.js"></script>
 
 	</body>
 </html>
