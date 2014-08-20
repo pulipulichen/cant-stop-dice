@@ -28,9 +28,17 @@ var _setup_slot_machine = function (_slot_group) {
                 _temp_score = parseInt(_temp_score, 10);
                 _score = _score + _temp_score;
             }
-            _score_result.text(_score);
+            //_score_result.text(_score);
             
             if (_subgroup.find(".running").length === 0) {
+                var _score = 0;
+                _subgroup.find(".slotMachine").each(function (_index, _ele) {
+                    var _ai = $(_ele).attr("active_index");
+                    //console.log(['ai', _ai]);
+                    _ai = parseInt(_ai, 10) + 1;
+                    _score = _score + _ai;
+                });
+                _score_result.text(_score);
                 _score_result.addClass("complete");
             }
             
@@ -80,19 +88,23 @@ var _setup_slot_machine = function (_slot_group) {
                 });
                 
                 setTimeout(function () {
-                    _start_flag = 2;
+                    $(".tap-message").fadeIn(function () {
+                        _start_flag = 2;
+                    });
                 }, _machines.length * _interval);
             }
             else if (_start_flag === 2) {
-
+                
                 _start_flag = 3;
-                var _interval = 100;
-                $.each(_machines, function (_index, _machine) {
-                    setTimeout(function () {
-                        _machine.shuffle(1, _onComplete);
-                    }, _interval * _index);
+                
+                $(".tap-message").fadeOut(function () {
+                    var _interval = 100;
+                    $.each(_machines, function (_index, _machine) {
+                        setTimeout(function () {
+                            _machine.shuffle(1, _onComplete);
+                        }, _interval * _index);
+                    });
                 });
-
                 //setTimeout(function () {
                 //    _start_flag = 0;
                 //}, _machines.length * _interval);
@@ -119,12 +131,16 @@ var _setup_slot_machine = function (_slot_group) {
         var _total_height = window.innerHeight;
         var _total_width = window.innerWidth;
         
+        //--------------------------
+        
         if (_total_width > _total_height) {
             $("body").addClass("landscape");
         }
         else {
             $("body").removeClass("landscape");
         }
+        
+        // ---------------------------------
         
         //if (_is_mobile()) {
         //    _total_height = _total_height - 50;
@@ -133,6 +149,18 @@ var _setup_slot_machine = function (_slot_group) {
         $(".slot-group").height(_total_height);
         //var _height = $(".slot-group").height();
         //$(".slot-group").css("margin-top", "-" + (_height/2) + "px");
+        
+        //----------------------------------
+        
+        var _tap_message = $(".tap-message");
+        
+        var _tap_top = (_total_height / 2) - (_tap_message.height() / 2);
+        var _tap_left = (_total_width / 2) - (_tap_message.width() / 2);
+        //console.log([_total_width, _tap_message.width(), _tap_left]);
+        _tap_message.css("top", _tap_top + "px")
+            .css("left", _tap_left + "px");
+        
+        //---------------------------------
         
         var _orginal_height = $(".slotMachine .slot:first").height();
         var _max_width = $(".slot-group .slot-subgroup:first").width();

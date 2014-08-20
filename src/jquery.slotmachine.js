@@ -135,7 +135,7 @@
 			}
                         
                         _minTop = -_$fakeFirstTitle.outerHeight();
-                        console.log(["_getOffset", _minTop]);
+                        //console.log(["_getOffset", _minTop]);
 			return -offset + _minTop;
 		}
 		
@@ -486,7 +486,7 @@
 		
 		//Set min top offset
 		_minTop = -_$fakeFirstTitle.outerHeight();
-                console.log(["first", _minTop]);
+                //console.log(["first", _minTop]);
                 
 		//Show active element
 		$container.css("margin-top", _getOffset(self.settings.active) );
