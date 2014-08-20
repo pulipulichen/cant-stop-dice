@@ -1,16 +1,41 @@
 
-
-.slot-subgroup {
-    text-align: center;
-    clear: both;
+body {
+    background-image: url(../img/bg.jpg);
     cursor: pointer;
 }
 
+.slot-group {
+    width: 100%;
+}
+
+.slot-subgroup {
+    text-align: center;
+    /*clear: both;*/
+    cursor: pointer;
+    /*float:left;*/
+    display: inline-block;
+    margin-right: 30px;
+}
+.slot-subgroup:last-of-type {
+    margin-right: 0px;
+}
+
+.slot-select {
+    clear: both;
+    border-top: 5px rgba(100%, 100%, 100%, 0.6) dotted;
+    padding-top: 5px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.slot-select:first-of-type {
+    border-top-width: 0px;
+    margin-top: 0px;
+}
 
 .slot-machine-score {
     font-size: 36pt;
 }
-
 
 .dice-default .slot1{
 	background-image: url("../img/dice_default_1.png");

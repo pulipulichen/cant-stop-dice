@@ -258,8 +258,8 @@ p.title{
 	overflow: hidden;
 	display: inline-block;
 	text-align: center;
-	border: 5px solid #FFF;
-	background-color: #ffffff;
+	border: 0px solid #FFF;
+	/*background-color: #ffffff;*/
 }
 .noBorder{
 	border:none !important;
