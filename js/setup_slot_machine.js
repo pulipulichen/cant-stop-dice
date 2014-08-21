@@ -19,15 +19,17 @@ var _setup_slot_machine = function (_slot_group) {
             var _el = $($el[0]);
             _el.removeClass("running");
             _el.attr("active_index", active.index);
-            var _score = active.index + 1;
+            //var _score = active.index + 1;
             var _subgroup = _el.parents(".slot-subgroup:first");
             var _score_result = _subgroup.find(".slot-machine-score");
 
-            if (_score_result.text() !== "?") {
+            /*
+            if (_score_result.text().indexOf("?") === -1) {
                 var _temp_score = _score_result.text();
                 _temp_score = parseInt(_temp_score, 10);
                 _score = _score + _temp_score;
             }
+            */
             //_score_result.text(_score);
             
             if (_subgroup.find(".running").length === 0) {
@@ -38,7 +40,15 @@ var _setup_slot_machine = function (_slot_group) {
                     _ai = parseInt(_ai, 10) + 1;
                     _score = _score + _ai;
                 });
-                _score_result.text(_score);
+                
+                var _dot = Math.abs(6 - Math.abs(_score - 7));
+                _score = _score + '<div class="dot">';
+                for (var _i = 0; _i < _dot; _i++) {
+                    _score = _score + "&#46;";
+                }
+                _score = _score + '</div>';
+                
+                _score_result.html(_score);
                 _score_result.addClass("complete");
             }
             
@@ -48,7 +58,7 @@ var _setup_slot_machine = function (_slot_group) {
         };
 
         var _results = _slot_group.find(".slot-machine-score");
-        _results.text("?");
+        _results.html('?<div class="dot hide">.</div>');
         var _reset_score = function () {
             _results.each(function (_i, _e) {
                 _e = $(_e);
@@ -56,7 +66,7 @@ var _setup_slot_machine = function (_slot_group) {
                 
                 if (_e.text() !== "?") {
                     _e.fadeOut("fast", function () {
-                        _e.text("?");
+                        _e.html('?<div class="dot hide">.</div>');
                         _e.fadeIn("fast");
                     });
                 }

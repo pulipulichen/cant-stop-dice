@@ -128,7 +128,16 @@ body {
     font-size: 36pt;
     color: #333;
     font-family: Maggie-Moo;
+    min-height: 50px;
 }
+.slot-machine-score .dot {
+    /*position: absolute;*/
+    line-height: 0px;
+    font-family: Times New Roman;
+}
+.slot-machine-score .dot.hide {
+    visibility: hidden;
+} 
 
 @font-face {
     font-family: Maggie-Moo;
