@@ -1,0 +1,24 @@
+CACHE MANIFEST
+
+# Updated on: 2012-11-24 21:44:18
+
+css/reset.css
+css/style.css
+css/cant_stop_dice.css
+js/jquery.js
+src/jquery.slotmachine.js
+img/favicon.png
+js/shake.js
+js/setup_shake.js
+js/setup_slot_machine.js
+src/jquery.slotmachine.js
+img/bg.jpg
+img/dice_default_1.png
+img/dice_default_2.png
+img/dice_default_3.png
+img/dice_default_4.png
+img/dice_default_5.png
+img/dice_default_6.png
+
+NETWORK:
+*

@@ -5,16 +5,33 @@ var _setup_slot_machine = function (_slot_group) {
             _slot_group = $(_slot_group);
         }
         
+        var _vibrate = function () {
+            if (typeof(navigator) === "object" 
+                    && typeof(navigator.vibrate) === "function") {
+                navigator.vibrate(100);
+            }
+        };
+
         var _slot_machine_option = {
             active	: 0,
             delay	: 100
         };
         var _machines = [];
         _slot_group.find(".slotMachine").each(function (_index, _machine) {
-            _machine = $(_machine);
-            var _m = _machine.slotMachine(_slot_machine_option);
-            _machines.push(_m);
+            setTimeout(function () {
+                var _random = parseInt(Math.random() * 6 , 10);
+                _slot_machine_option.active = _random;
+                _machine = $(_machine);
+                var _m = _machine.slotMachine(_slot_machine_option);
+                _machines.push(_m);
+            }, 100);
+            
         });
+        
+        //setTimeout(function () {
+        //    $(".slot-select").fadeIn();
+        //}, 50);
+        
         var _onComplete = function ($el, active){
             var _el = $($el[0]);
             _el.removeClass("running");
@@ -64,7 +81,7 @@ var _setup_slot_machine = function (_slot_group) {
                 _e = $(_e);
                 _e.removeClass("complete");
                 
-                if (_e.text() !== "?") {
+                if (_e.text().indexOf("?") === -1) {
                     _e.fadeOut("fast", function () {
                         _e.html('?<div class="dot hide">.</div>');
                         _e.fadeIn("fast");
@@ -90,6 +107,9 @@ var _setup_slot_machine = function (_slot_group) {
                 //    _machine.shuffle();
                 //});
                 
+                _vibrate();
+                
+            
                 $.each(_machines, function (_index, _machine) {
                     setTimeout(function () {
                         _slot_group.find(".slotMachine").addClass("running");
@@ -106,6 +126,8 @@ var _setup_slot_machine = function (_slot_group) {
             else if (_start_flag === 2) {
                 
                 _start_flag = 3;
+                
+                _vibrate();
                 
                 $(".tap-message").fadeOut(function () {
                     var _interval = 100;
@@ -150,6 +172,25 @@ var _setup_slot_machine = function (_slot_group) {
             $("body").removeClass("landscape");
         }
         
+        /*
+        if (_is_mobile()) {
+            if ($("body").hasClass("landscape")) {
+                alert([_total_width, $("tr").width()]);
+                if (parseInt(_total_width / 2, 10) === $("tr").width()) {
+                    setTimeout(function () {
+                        $("tr").css("width", "100px");
+                        alert([_total_width, $("tr").width()]);
+                    }, 100);
+                }
+                //$("tr").css("width", parseInt(_total_width / 3, 10) + "px");
+            }
+            else {
+                //$("tr").css("width", "100%");
+            }
+            
+        }
+        */
+        
         // ---------------------------------
         
         //if (_is_mobile()) {
@@ -183,6 +224,11 @@ var _setup_slot_machine = function (_slot_group) {
             _size = _max_height;
         }
         _size = parseInt(((_size / 2) - 10), 10);
+        //if (_is_mobile()) {
+        //    _size = _size / 2;
+        //}
+        
+        
         
         var _interval_height = _orginal_height - _size;
         
@@ -196,7 +242,7 @@ var _setup_slot_machine = function (_slot_group) {
         var _active_index = $(".slotMachine:first").attr("active_index");
         //console.log(['int 1', _interval_height, _margin_top, _size, _orginal_height]);
         if (_margin_top !== "-" + _size + "px") {
-            if (_active_index === undefined) {
+            if (_active_index === undefined && typeof(_margin_top) === "string") {
                 _margin_top = _margin_top.substring(0, _margin_top.length - 2);
                 _margin_top = parseInt(_margin_top, 10) + _interval_height;
                 //console.log(['int', _interval_height, _margin_top, _size, _orginal_height, _margin_top + "px"]);

@@ -22,6 +22,8 @@ body {
     height: 100%;
     border: 1px solid red;
     */
+    width: 100%;
+    overflow: hidden;
 }
 
 .slot-group {
@@ -56,14 +58,16 @@ body {
 }
 
 .slot-group tr {
-    height: 33%;
+    height: 32%;
     border-top: 5px rgba(100%, 100%, 100%, 0.6) dotted;
     text-align: center;
 }
 
 .landscape .slot-group tr {
     height: 100%;
-    width: 32%;
+    width: 33%;
+    /*max-width: 33%;*/
+    /*overflow-x: hidden;*/
     border-top-width: 0px;
     border-left: 5px rgba(100%, 100%, 100%, 0.6) dotted;
     display: table-cell;
@@ -71,6 +75,11 @@ body {
 }
 
 .slot-group tr:first-of-type {
+    border-top-width: 0px;
+    border-left-width: 0px;
+}
+
+.landscape .slot-group tr:first-of-type {
     border-top-width: 0px;
     border-left-width: 0px;
 }
@@ -92,6 +101,7 @@ body {
     text-align: center;
     */
     /*display: table-row;*/
+    /*display:none;*/
 }
 
 /*
@@ -116,13 +126,18 @@ body {
 }
 .slot-subgroup:last-of-type {
     margin-right: 0px;
-    margin-top: 0px;
+    margin-bottom: 0px;
 }
 
 .landscape .slot-subgroup {
-    width: 95%;
-    margin-top: 5%;
+    width: 90%;
+    margin-bottom: 15%;
 }
+
+.landscape .slot-subgroup:last-of-type {
+    margin-bottom: 0px;
+}
+
 
 .slot-machine-score {
     font-size: 36pt;
