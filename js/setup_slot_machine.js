@@ -17,6 +17,10 @@ var _setup_slot_machine = function (_slot_group) {
             delay	: 100
         };
         var _machines = [];
+        var _machines_sound = [];
+        var _end_sound = new Howl({
+            urls: ['img/blop.mp3']
+        });
         _slot_group.find(".slotMachine").each(function (_index, _machine) {
             setTimeout(function () {
                 var _random = parseInt(Math.random() * 6 , 10);
@@ -24,6 +28,12 @@ var _setup_slot_machine = function (_slot_group) {
                 _machine = $(_machine);
                 var _m = _machine.slotMachine(_slot_machine_option);
                 _machines.push(_m);
+                
+                var _sound = new Howl({
+                    urls: ['img/shake_and_roll_dice.mp3'],
+                    loop: true
+                });
+                _machines_sound.push(_sound);
             }, 100);
             
         });
@@ -49,6 +59,8 @@ var _setup_slot_machine = function (_slot_group) {
             */
             //_score_result.text(_score);
             
+            // 播放結束音效
+            
             if (_subgroup.find(".running").length === 0) {
                 var _score = 0;
                 _subgroup.find(".slotMachine").each(function (_index, _ele) {
@@ -67,6 +79,8 @@ var _setup_slot_machine = function (_slot_group) {
                 
                 _score_result.html(_score);
                 _score_result.addClass("complete");
+                
+                _end_sound.play();
             }
             
             if (_slot_group.find(".running").length === 0) {
@@ -77,11 +91,17 @@ var _setup_slot_machine = function (_slot_group) {
         var _results = _slot_group.find(".slot-machine-score");
         _results.html('?<div class="dot hide">.</div>');
         var _reset_score = function () {
+            if (_results.eq(0).text().indexOf("?") === -1) {
+                if (window.confirm("Do you want to reset score and roll dices again?") === false) {
+                    return false;
+                }
+            }
             _results.each(function (_i, _e) {
                 _e = $(_e);
                 _e.removeClass("complete");
                 
                 if (_e.text().indexOf("?") === -1) {
+                    
                     _e.fadeOut("fast", function () {
                         _e.html('?<div class="dot hide">.</div>');
                         _e.fadeIn("fast");
@@ -89,6 +109,7 @@ var _setup_slot_machine = function (_slot_group) {
                 }
                 //_e.text("?");
             });
+            return true;
         };
         _reset_score();
 
@@ -101,7 +122,10 @@ var _setup_slot_machine = function (_slot_group) {
             
             if (_start_flag === 0) {
                 _start_flag = 1;
-                _reset_score();
+                
+                if (_reset_score() === false) {
+                    return;
+                }
 
                 //$.each(_machines, function (_index, _machine) {
                 //    _machine.shuffle();
@@ -114,7 +138,8 @@ var _setup_slot_machine = function (_slot_group) {
                     setTimeout(function () {
                         _slot_group.find(".slotMachine").addClass("running");
                         _machine.shuffle();
-                    }, _interval * _index);
+                        _machines_sound[_index].play();
+                    }, (_index * (_interval % 7) + _interval) * _index );
                 });
                 
                 setTimeout(function () {
@@ -129,14 +154,43 @@ var _setup_slot_machine = function (_slot_group) {
                 
                 _vibrate();
                 
-                $(".tap-message").fadeOut(function () {
-                    var _interval = 100;
-                    $.each(_machines, function (_index, _machine) {
+                if ($(".tap-message:visible").length === 1) {
+                    $(".tap-message").fadeOut(function () {
+                        var _interval = 500;
+                        $.each(_machines, function (_index, _machine) {
+                        //for (var _index = 0; _index < 4; _index++) {
+                            //var _machine = _machines[_index];
+                            setTimeout(function () {
+                                _machine.shuffle(1, _onComplete);
+                                _machines_sound[_index].stop();
+                            }, _interval * _index);
+                        //}
+                        //_start_flag = 4;
+                        });
+                    });
+                }
+                    /*
+                } else if (_start_flag === 4) {
+                    for (var _index = 4; _index < 8; _index++) {
+                        var _machine = _machines[_index];
                         setTimeout(function () {
                             _machine.shuffle(1, _onComplete);
+                            _machines_sound[_index].stop();
                         }, _interval * _index);
-                    });
-                });
+                    }
+                    _start_flag = 5;
+                }
+                else {
+                    for (var _index = 8; _index < _machines.length; _index++) {
+                        var _machine = _machines[_index];
+                        setTimeout(function () {
+                            _machine.shuffle(1, _onComplete);
+                            _machines_sound[_index].stop();
+                        }, _interval * _index);
+                    }
+                    _start_flag = 5;
+                }
+                    */
                 //setTimeout(function () {
                 //    _start_flag = 0;
                 //}, _machines.length * _interval);
