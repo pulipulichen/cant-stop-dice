@@ -206,3 +206,7 @@ body {
     font-family: Maggie-Moo;
 
 }
+
+.dice-template {
+    display: none;
+}
