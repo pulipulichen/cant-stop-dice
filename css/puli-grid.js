@@ -25,8 +25,12 @@
 if (typeof($) === "object") {
 
 $(function () {
-    
-var _puli_grid = {
+
+if (typeof($P) === "undefined") {
+    $P = {};
+}
+
+$P.grid = {
     init: function () {
         var _pgrid = this;
         $(window).resize(function () {
@@ -34,19 +38,24 @@ var _puli_grid = {
         });
         
         _pgrid.resize();
+        return this;
     },
     resize: function () {
         if (this.target_objects === undefined) {
             this.target_objects = $(this.target_selector);
         }
+        this.set_orientation(this.get_orientation());
+        return this;
+    },
+    get_orientation: function () {
         var _window_height = window.innerHeight;
         var _window_width = window.innerWidth;
         
         if (_window_height > _window_width) {
-            this.set_orientation("portrait");
+            return "portrait";
         }
         else {
-            this.set_orientation("landscape");
+            return "landscape";
         }
     },
     set_orientation: function (_orientation) {
@@ -59,12 +68,13 @@ var _puli_grid = {
             this.target_objects.filter(".landscape").removeClass(_hide_classname);
             this.target_objects.filter(".portrait").addClass(_hide_classname);
         }
+        return this;
     },
     target_selector: "table.puli-grid",
     target_objects: undefined
 }; //var _puli_grid = {
 
-_puli_grid.init();
+$P.grid.init();
 
 }); //$(function () {
     
