@@ -22,58 +22,77 @@
  * THE SOFTWARE.
  */
 
-if (typeof($) === "object") {
+if (typeof($) !== "undefined") {
 $(function () {
 
 if (typeof($P) === "undefined") {
     $P = {};
 }
 
-$P.init_slot_machine = {
-    init: function() {
-        var _grid = this.append_to_grid();
-    },
-    // ----------------
-    get_templete: function () {
-        if (this.template_cache === undefined) {
-            this.template_cache = $(this.templete_selector);
-        }
-        return this.template_cache;
-    },
-    templete_selector: ".slot-machine.dice-templete",
-    template_cache: undefined,
-    
-    // --------------
-    create_machine: function () {
-        
-    },
-    get_slot_machine_collection: function () {
+$P.slot_machine_collection_model = {
+    create: function () {
         if (this.slot_machine_collection.length === 0) {
-            var _template = this.get_templete();
+            //var _template = this.get_templete();
             var _grid_slot_number = $(this.grid_selector).filter(":first").find(".slot-machine").length;
-
+            
             for (var _i = 0; _i < _grid_slot_number; _i++) {
-                var _t = _template.clone();
+                var _t = $P.slot_machine_group_model.create();
                 this.slot_machine_collection.push(_t);
             }
+            
         }
         return this.slot_machine_collection;
     },
+    
     grid_selector: ".slot-machine-grid",
     slot_machine_collection: [],
     
-    // --------------
-    append_to_grid: function () {
-        var _coll = this.slot_machine_collection;
-        var _grid = $(this.grid_selector).filter(":visible");
-        for (var _i in _coll) {
-            _grid.find(".slot-machine-" + _i).append(_coll[_i]);
+    // ------------------------
+    start_roll: function (_callback) {
+        
+        var _coll = this;
+        var _next_wait_ary = $P.random.get_mutliple_int(50, 150, 6);
+        var _wait_time_base = 0;
+        
+        for (var _i = 0; _i < _coll.length; _i++) {
+            _wait_time_base = _wait_time_base + _next_wait_ary[_i];
+            setTimeout(function () {
+                _coll[_i].start_roll();
+            }, _wait_time_base);
         }
-        return this;
+        
+        if (typeof(_callback) === "function") {
+            setTimeout(function () {
+                _callback();
+            }, _wait_time_base);
+        } 
+    },
+    stop_action: function (_callback) {
+        var _coll = this;
+        var _next_wait_ary = $P.random.get_mutliple_int(500, 1000, 6);
+        var _group_interval = $P.random.get_mutliple_int(1000, 3000, 2);
+        var _wait_time_base = 0;
+        
+        for (var _i = 0; _i < _coll.length; _i++) {
+            
+            if (_i !== 0 && _i % 2 === 0) {
+                _wait_time_base = _wait_time_base + _group_interval.pop();
+            }
+            
+            _wait_time_base = _wait_time_base + _next_wait_ary[_i];
+            setTimeout(function () {
+                _coll[_i].stop_roll();
+            }, _wait_time_base);
+            
+        }
+        
+        if (typeof(_callback) === "function") {
+            setTimeout(function () {
+                _callback();
+            }, _wait_time_base);
+        }
     }
 };  //var _init_slot_machine = {
-
-$P.init_slot_machine.init();
 
 }); //$(function () {
 }   //if (typeof($) === "object") {

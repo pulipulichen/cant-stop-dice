@@ -25,13 +25,19 @@ THE SOFTWARE.
     Created on : 2014/8/25, 下午 03:50:04
     Author     : Pulipuli Chen <pulipuli.chen@gmail.com>
 */
-
+ html,body{
+    margin:0;
+    padding:0;
+    height:100%;
+    border:none
+ }
+   
 table.puli-grid {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
 }
 
 table.puli-grid td {

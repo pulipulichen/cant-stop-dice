@@ -23,7 +23,7 @@
  */
 ;
 
-if (typeof($) === "object") {
+if (typeof($) !== "undefined") {
 $(function () {
 
 if (typeof($P) === "undefined") {
@@ -33,6 +33,7 @@ if (typeof($P) === "undefined") {
 $P.slot_machine_model = {
     create: function (_active) {
         var _t = $(this.templete_selector).clone();
+        //alert(_t.length);
         _t.removeClass("dice-template");
         
         var _option = this.slot_machine_option;
@@ -41,10 +42,16 @@ $P.slot_machine_model = {
         }
         else {
             _option.active = $P.random.get_int(0, 5);
+            //alert(_option.active);
         }
+        _t.active_index = _option.active;
+        //_option.active = 5;
         
         setTimeout(function () {
-            _t.find(".slotMachine").slotMachine(_option);
+            _t.slotMachine({
+                active: _t.active_index,
+                delay: 100
+            });
         }, 0);
         
         _t.sound = this.init_sound();
@@ -53,7 +60,7 @@ $P.slot_machine_model = {
         
         return _t;
     },
-    templete_selector: ".slot-machine.dice-templete",
+    templete_selector: ".slot-machine.dice-template",
     // ----------------
     slot_machine_option: {
         active	: 0,

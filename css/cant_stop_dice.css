@@ -63,6 +63,15 @@ body {
     text-align: center;
 }
 
+.slot-machine-grid .border-bottom {
+    border-bottom: 5px rgba(100%, 100%, 100%, 0.6) solid;
+}
+
+.slot-machine-grid .border-right {
+    border-right: 5px rgba(100%, 100%, 100%, 0.6) solid;
+}
+
+
 .landscape .slot-group tr {
     height: 100%;
     width: 33%;

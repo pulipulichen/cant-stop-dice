@@ -21,49 +21,48 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-;
 
 if (typeof($) !== "undefined") {
 $(function () {
 
 if (typeof($P) === "undefined") {
     $P = {};
-}   //if (typeof($P) === "undefined") {
+}
 
-$P.slot_score_model = {
-    create: function () {
+$P.init_slot_machine = {
+    init: function() {
+        var _grid = this.append_to_grid();
         
-        var _s = $("<div/>").addClass("slot-machine-score");
-        
-        _s.set_score = this.set_score;
-        _s.reset_score = this.reset_score;
-        
-        _s.reset_score();
-        
-        return _s;
+        var _this = this;
+        $P.grid.add_listener(function () {
+            _this.append_to_grid();
+        });
     },
-    set_score: function (_score) {
-        
-        var _slot_score = this;
-        
-        var _dot = Math.abs(6 - Math.abs(_score - 7));
-        _score = _score + '<div class="dot">';
-        for (var _i = 0; _i < _dot; _i++) {
-            _score = _score + "&#46;";
+    // --------------
+    get_slot_machine_collection: function () {
+        if (this.slot_machine_collection.length === 0) {
+            this.slot_machine_collection = $P.slot_machine_collection_model.create();
         }
-        _score = _score + '</div>';
-        
-        _slot_score.html(_score);
-        _slot_score.addClass("complete");
+        return this.slot_machine_collection;
     },
-    reset_score: function () {
-        
-        var _slot_score = this;
-        _slot_score.html('?<div class="dot hide">.</div>');
-        _slot_score.removeClass("complete");
+    grid_selector: ".slot-machine-grid",
+    slot_machine_collection: [],
+    
+    // --------------
+    append_to_grid: function () {
+        var _coll = this.get_slot_machine_collection();
+        var _grid = $(this.grid_selector).filter(":visible");
+        for (var _i = 0; _i < _coll.length; _i++) {
+            var _selector = "[slot_machine='" + _i + "']";
+            var _g = _grid.find(_selector);
+            //alert([_coll[_i].length, _g.length]);
+            _g.append(_coll[_i]);
+        }
+        return this;
     }
-};
+};  //var _init_slot_machine = {
+
+$P.init_slot_machine.init();
 
 }); //$(function () {
 }   //if (typeof($) === "object") {
-

@@ -21,49 +21,21 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-;
 
-if (typeof($) !== "undefined") {
-$(function () {
 
-if (typeof($P) === "undefined") {
-    $P = {};
-}   //if (typeof($P) === "undefined") {
-
-$P.slot_score_model = {
-    create: function () {
-        
-        var _s = $("<div/>").addClass("slot-machine-score");
-        
-        _s.set_score = this.set_score;
-        _s.reset_score = this.reset_score;
-        
-        _s.reset_score();
-        
-        return _s;
-    },
-    set_score: function (_score) {
-        
-        var _slot_score = this;
-        
-        var _dot = Math.abs(6 - Math.abs(_score - 7));
-        _score = _score + '<div class="dot">';
-        for (var _i = 0; _i < _dot; _i++) {
-            _score = _score + "&#46;";
-        }
-        _score = _score + '</div>';
-        
-        _slot_score.html(_score);
-        _slot_score.addClass("complete");
-    },
-    reset_score: function () {
-        
-        var _slot_score = this;
-        _slot_score.html('?<div class="dot hide">.</div>');
-        _slot_score.removeClass("complete");
-    }
-};
-
-}); //$(function () {
-}   //if (typeof($) === "object") {
-
+require([
+    "../lib/jquery",
+    "../src/jquery.slotmachine",
+    "../lib/howler.min",
+    "shake",
+    "setup_shake",
+    "puli-grid",
+    "puli-random",
+    "slot-machines_collection_model",
+    "slot_machine_group_model",
+    "slot_machine_model",
+    "slot_score_model",
+    "init_slot_machine"  //這要最後載入
+], function () {
+    //$P.grid.init();
+});

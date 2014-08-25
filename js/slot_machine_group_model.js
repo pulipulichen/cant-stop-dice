@@ -23,7 +23,7 @@
  */
 
 
-if (typeof($) === "object") {
+if (typeof($) !== "undefined") {
 $(function () {
 
 if (typeof($P) === "undefined") {

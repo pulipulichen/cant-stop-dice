@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-if (typeof($) === "object") {
+if (typeof($) !== "undefined") {
 
 $(function () {
 
@@ -36,17 +36,30 @@ $P.grid = {
         $(window).resize(function () {
             _pgrid.resize();
         });
-        
+        //alert(111);
         _pgrid.resize();
         return this;
     },
     resize: function () {
         if (this.target_objects === undefined) {
             this.target_objects = $(this.target_selector);
+            this.target_objects.attr("height", "100%");
+            //alert(this.target_objects.length);
         }
-        this.set_orientation(this.get_orientation());
+        var _o = this.get_orientation();
+        if (_o !== this.last_orientation) {
+            this.set_orientation(_o);
+            
+            for (var _i in this.listener) {
+                var _callback = this.listener[_i];
+                if (typeof(_callback) === "function") {
+                    _callback();
+                }
+            }
+        }
         return this;
     },
+    last_orientation: null,
     get_orientation: function () {
         var _window_height = window.innerHeight;
         var _window_width = window.innerWidth;
@@ -71,7 +84,12 @@ $P.grid = {
         return this;
     },
     target_selector: "table.puli-grid",
-    target_objects: undefined
+    target_objects: undefined,
+    // ---
+    add_listener: function (_callback) {
+        this.listener.push(_callback);
+    },
+    listener: []
 }; //var _puli_grid = {
 
 $P.grid.init();

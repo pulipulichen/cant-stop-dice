@@ -13,10 +13,12 @@
     
     <link rel="stylesheet" href="css/puli-grid.css" type="text/css" />
 
-    <script type="text/javascript" src="js/jquery.js"></script>
+    <!-- <script type="text/javascript" src="js/jquery.js"></script> -->
     <!-- <script type="text/javascript" src="dist/jquery.slotmachine.min.js"></script> -->
+    <!--
     <script type="text/javascript" src="src/jquery.slotmachine.js"></script>
     <script type="text/javascript" src="js/howler.min.js"></script>
+    -->
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1, minimum-scale=1 user-scalable=no" />
 
     <!-- Favicon -->
@@ -28,7 +30,7 @@
 <!----
   -- Slot Machine
   -->
-<div class="slotMachine dice-default">
+<div class="slotMachine dice-default slot-machine dice-template">
     <div class="slot slot1"></div>
     <div class="slot slot2"></div>
     <div class="slot slot3"></div>
@@ -36,6 +38,7 @@
     <div class="slot slot5"></div>
     <div class="slot slot6"></div>
 </div>
+<!--
 <div class="slot-machine dice-default dice-template" >
     <div class="slotMachine dice-default">
             <div class="slot slot1"></div>
@@ -56,7 +59,7 @@
     </div>    
     <div class="slot-machine-score"></div>
 </div>
-
+-->
 <!----
   -- Slot Grip Portrait
   -->
@@ -67,11 +70,11 @@
       </tr>
       <tr class="border-bottom">
           <td class="slot-machine" slot_group="1" slot_machine="2"></td>
-          <td class="slot-machine" slot_group="1" slot_machine="2"></td>
+          <td class="slot-machine" slot_group="1" slot_machine="3"></td>
       </tr>
       <tr>
-          <td class="slot-machine" slot_group="2" slot_machine="3"></td>
-          <td class="slot-machine" slot_group="2" slot_machine="3"></td>
+          <td class="slot-machine" slot_group="2" slot_machine="4"></td>
+          <td class="slot-machine" slot_group="2" slot_machine="5"></td>
       </tr>
   </table>
   
@@ -100,20 +103,39 @@
   
 <!------------------------------------------------>
 <!-- Include JavaScript -->
-  
+<!--
 <script src="js/shake.js"></script>
+-->
 <!--
 <script src="js/leecrossley_shake.js"></script>
 -->
+<!--
 <script src="js/setup_shake.js"></script>
 
 <script src="js/puli-grid.js"></script>
 
 <script src="js/puli-random.js"></script>
 
+
+-->
 <!--
 <script src="js/setup_slot_machine.js"></script>
 -->
+
+<!-- <script data-main="js/require_js_config" src="lib/require.min.js"></script>-->
+
+<script src="lib/jquery.js"></script>
+<script src="src/jquery.slotmachine.js"></script>
+<script src="lib/howler.min.js"></script>
+<script src="js/shake.js"></script>
+<script src="js/setup_shake.js"></script>
+<script src="js/puli-grid.js"></script>
+<script src="js/puli-random.js"></script>
+<script src="js/slot_machines_collection_model.js"></script>
+<script src="js/slot_machine_group_model.js"></script>
+<script src="js/slot_machine_model.js"></script>
+<script src="js/slot_score_model.js"></script>
+<script src="js/init_slot_machine.js"></script>
 
 <script>
     //alert($P.random.get_mutliple_int(0, 10, 5, false));
