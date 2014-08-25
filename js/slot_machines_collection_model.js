@@ -31,17 +31,20 @@ if (typeof($P) === "undefined") {
 
 $P.slot_machine_collection_model = {
     create: function () {
-        if (this.slot_machine_collection.length === 0) {
+        
             //var _template = this.get_templete();
             var _grid_slot_number = $(this.grid_selector).filter(":first").find(".slot-machine").length;
             
+            var _slot_machine_collection = [];
             for (var _i = 0; _i < _grid_slot_number; _i++) {
                 var _t = $P.slot_machine_group_model.create();
-                this.slot_machine_collection.push(_t);
+                _slot_machine_collection[_i] = _t;
             }
             
-        }
-        return this.slot_machine_collection;
+            _slot_machine_collection.start_roll = this.start_roll;
+            _slot_machine_collection.stop_roll = this.stop_roll;
+        
+        return _slot_machine_collection;
     },
     
     grid_selector: ".slot-machine-grid",
@@ -56,8 +59,9 @@ $P.slot_machine_collection_model = {
         
         for (var _i = 0; _i < _coll.length; _i++) {
             _wait_time_base = _wait_time_base + _next_wait_ary[_i];
-            setTimeout(function () {
-                _coll[_i].start_roll();
+            var _c = _coll[_i];
+            setTimeout(function () {   
+                _c.start_roll();
             }, _wait_time_base);
         }
         
@@ -80,8 +84,9 @@ $P.slot_machine_collection_model = {
             }
             
             _wait_time_base = _wait_time_base + _next_wait_ary[_i];
+            var _c = _coll[_i];
             setTimeout(function () {
-                _coll[_i].stop_roll();
+                _c.stop_roll();
             }, _wait_time_base);
             
         }

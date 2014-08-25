@@ -44,19 +44,56 @@ $P.slot_machine_model = {
             _option.active = $P.random.get_int(0, 5);
             //alert(_option.active);
         }
-        _t.active_index = _option.active;
+        
         //_option.active = 5;
+        var _this = this;
+        _t.start_roll = function () {
+            var _machine = _t;
+            //console.log(this.className);
+            //_machine.shuffle();
+            _machine.machine.shuffle();
+            //_machine.start_shuffle();
+            //_machine.sound.play();
+            _machine.addClass(_this.running_classname);
+            _machine.removeAttr("active_index");
+            _machine.active_index = undefined;
+        };
+        _t.stop_roll = function (_callback) {
+            var _machine = _t;
+            //var _this = this;
+            _machine.machine.shuffle(1, function (_el, _active) {
+                _machine.removeClass(_this.running_classname);
+                _machine.attr("active_index", _active);
+                _machine.active_index = _active;
+                _machine.sound.stop();
+
+                if (typeof(_callback) === "function") {
+                    _callback(_machine);
+                }
+            });
+        };
+        _t.get_active_index = _get_active_index = function () {
+            return this.active_index;
+        };
+        
+        _t.active_index = _option.active;
+        _t.sound = _this.init_sound();
         
         setTimeout(function () {
-            _t.slotMachine({
+            _t.machine = _t.slotMachine({
                 active: _t.active_index,
                 delay: 100
             });
+            _t.start_shuffle = function () {
+               _t.machine.shuffle(); 
+            };
+            
+            //_t.start_roll = _start_roll;
+            //_t.stop_roll = _stop_roll;
+            //console.log(typeof(_t.start_roll));
         }, 0);
         
-        _t.sound = this.init_sound();
-        _t.start_roll = this.start_roll;
-        _t.stop_roll = this.stop_roll;
+        //console.log(typeof(_t.start_roll));
         
         return _t;
     },
@@ -79,31 +116,6 @@ $P.slot_machine_model = {
     
     //-----------------
     running_classname: "running",
-    start_roll: function () {
-        var _machine = $(this);
-        _machine.shuffle();
-        _machine.sound.play();
-        _machine.addClass(this.running_classname);
-        _machine.removeAttr("active_index");
-        _machine.active_index = undefined;
-    },
-    stop_roll: function (_callback) {
-        var _machine = $(this);
-        var _this = this;
-        _machine.shuffle(1, function (_el, _active) {
-            _machine.removeClass(_this.running_classname);
-            _machine.attr("active_index", _active);
-            _machine.active_index = _active;
-            _machine.sound.stop();
-            
-            if (typeof(_callback) === "function") {
-                _callback(_machine);
-            }
-        });
-    },
-    get_active_index: function () {
-        return this.active_index;
-    }
 };
 
 }); //$(function () {

@@ -37,16 +37,21 @@ $P.init_slot_machine = {
         $P.grid.add_listener(function () {
             _this.append_to_grid();
         });
+        
+        setTimeout(function () {
+            _this.slot_machine_collection.start_roll();
+            //_this.slot_machine_collection.stop_roll();
+        }, 100);
     },
     // --------------
     get_slot_machine_collection: function () {
-        if (this.slot_machine_collection.length === 0) {
+        if (this.slot_machine_collection === null) {
             this.slot_machine_collection = $P.slot_machine_collection_model.create();
         }
         return this.slot_machine_collection;
     },
     grid_selector: ".slot-machine-grid",
-    slot_machine_collection: [],
+    slot_machine_collection: null,
     
     // --------------
     append_to_grid: function () {
@@ -58,7 +63,7 @@ $P.init_slot_machine = {
             //alert([_coll[_i].length, _g.length]);
             _g.append(_coll[_i]);
         }
-        return this;
+        return _coll;
     }
 };  //var _init_slot_machine = {
 

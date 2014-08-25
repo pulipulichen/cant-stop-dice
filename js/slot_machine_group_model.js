@@ -50,6 +50,9 @@ $P.slot_machine_group_model = {
         _group.append(_score);
         _group.score = _score;
         
+        _group.start_roll = this.start_roll;
+        _group.stop_roll = this.stop_roll;
+        
         return _group;
     },
     //-----------------
@@ -60,9 +63,9 @@ $P.slot_machine_group_model = {
         var _interval = $P.random.get_mutliple_int(300, 500, 2);
         var _base_interval = 0;
         
-        for (var _i in _group.machines) {
+        for (var _i = 0; _i < _group.machines.length; _i++) {
+            var _m = _group.machines[_i];
             setTimeout(function () {
-                var _m = _group.machines[_i];
                 _m.start_roll();
             }, _base_interval);
             
@@ -81,13 +84,13 @@ $P.slot_machine_group_model = {
         var _interval = $P.random.get_mutliple_int(1000 , 1200, 2);
         var _base_interval = 0;
         
-        for (var _i in _group.machines) {
+        for (var _i = 0; _i < _group.machines.length; _i++) {
             if (_i !== 0) {
                 _base_interval = _base_interval + _interval[_i];
             }
             
+            var _m = _group.machines[_i];
             setTimeout(function () {
-                var _m = _group.machines[_i];
                 _m.stop_roll();
             }, _base_interval);
         }
