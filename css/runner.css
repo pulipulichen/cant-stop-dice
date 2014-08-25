@@ -1,0 +1,45 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2014/8/26, 上午 01:49:58
+    Author     : Pulipuli Chen <pulipuli.chen@gmail.com>
+*/
+#runner {
+    float: left;
+}
+
+#runner .runner {
+    /*background-color: red;*/
+    background-image: url(../img/user.png);
+    width: 64px;
+    height: 64px;
+    /*display: inline-block;*/
+    text-align: center;
+    padding: 0;
+    float:left;
+    
+    font-size: 36px;
+    line-height: 64px;
+    color: white;
+    text-shadow: 2px 2px rgba(0%,0%,0%,0.5);
+    
+    margin-left: -25px;
+    cursor: pointer;
+    margin-top: 5px;
+}
+/*
+#runner .runner.two {
+    font-size: 18px;
+}*/
+
+#runner .runner.runner-clear {
+    margin-left: -10px;
+    /*font-family: Cooper Std Black;*/
+}
+
+#runner .runner.runner-clear img {
+    margin-top: 20px;
+}
