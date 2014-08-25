@@ -9,6 +9,7 @@
 		<link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
                 <link rel="stylesheet" href="css/cant_stop_dice.css" type="text/css" media="screen" />
+                <link rel="stylesheet" href="css/menu.css" type="text/css" media="screen" />
 
 		<script type="text/javascript" src="lib/jquery.js"></script>
 		<!-- <script type="text/javascript" src="dist/jquery.slotmachine.min.js"></script> -->
@@ -23,13 +24,18 @@
 
 <!-- Slot Group -->
 <table class="slot-group">
-<tr>
+    <tr class="landscape">
+        <td class="first"></td>
+        <td></td>
+        <td></td>
+    </tr>
+<tr class="portrait first">
     <td>
 <!-- Slot Select -->
 <div class="slot-select">
     
 <!-- Slot Subgroup -->
-<div class="slot-subgroup">
+<div class="slot-subgroup" slot_machine="0">
     <div class="slotMachine dice-default">
             <div class="slot slot1"></div>
             <div class="slot slot2"></div>
@@ -52,62 +58,7 @@
 <!-- /Slot Subgroup -->
 
 <!-- Slot Subgroup -->
-<div class="slot-subgroup">
-    <div class="slotMachine dice-default">
-            <div class="slot slot1"></div>
-            <div class="slot slot2"></div>
-            <div class="slot slot3"></div>
-            <div class="slot slot4"></div>
-            <div class="slot slot5"></div>
-            <div class="slot slot6"></div>
-    </div>
-
-    <div class="slotMachine dice-default">
-            <div class="slot slot1"></div>
-            <div class="slot slot2"></div>
-            <div class="slot slot3"></div>
-            <div class="slot slot4"></div>
-            <div class="slot slot5"></div>
-            <div class="slot slot6"></div>
-    </div>    
-    <div class="slot-machine-score"></div>
-</div>
-<!-- /Slot Subgroup -->
-
-</div>
-<!-- Slot Select -->
-    </td>
-</tr>
-<tr>
-    <td>
-<!-- Slot Select -->
-<div class="slot-select">
-
-<!-- Slot Subgroup -->
-<div class="slot-subgroup">
-    <div class="slotMachine dice-default">
-            <div class="slot slot1"></div>
-            <div class="slot slot2"></div>
-            <div class="slot slot3"></div>
-            <div class="slot slot4"></div>
-            <div class="slot slot5"></div>
-            <div class="slot slot6"></div>
-    </div>
-
-    <div class="slotMachine dice-default">
-            <div class="slot slot1"></div>
-            <div class="slot slot2"></div>
-            <div class="slot slot3"></div>
-            <div class="slot slot4"></div>
-            <div class="slot slot5"></div>
-            <div class="slot slot6"></div>
-    </div>    
-    <div class="slot-machine-score"></div>
-</div>
-<!-- /Slot Subgroup -->
-
-<!-- Slot Subgroup -->
-<div class="slot-subgroup">
+<div class="slot-subgroup" slot_machine="1">
     <div class="slotMachine dice-default">
             <div class="slot slot1"></div>
             <div class="slot slot2"></div>
@@ -133,13 +84,13 @@
 <!-- Slot Select -->
     </td>
 </tr>
-<tr>
+<tr class="portrait">
     <td>
 <!-- Slot Select -->
 <div class="slot-select">
 
 <!-- Slot Subgroup -->
-<div class="slot-subgroup">
+<div class="slot-subgroup" slot_machine="2">
     <div class="slotMachine dice-default">
             <div class="slot slot1"></div>
             <div class="slot slot2"></div>
@@ -162,7 +113,62 @@
 <!-- /Slot Subgroup -->
 
 <!-- Slot Subgroup -->
-<div class="slot-subgroup">
+<div class="slot-subgroup" slot_machine="3">
+    <div class="slotMachine dice-default">
+            <div class="slot slot1"></div>
+            <div class="slot slot2"></div>
+            <div class="slot slot3"></div>
+            <div class="slot slot4"></div>
+            <div class="slot slot5"></div>
+            <div class="slot slot6"></div>
+    </div>
+
+    <div class="slotMachine dice-default">
+            <div class="slot slot1"></div>
+            <div class="slot slot2"></div>
+            <div class="slot slot3"></div>
+            <div class="slot slot4"></div>
+            <div class="slot slot5"></div>
+            <div class="slot slot6"></div>
+    </div>    
+    <div class="slot-machine-score"></div>
+</div>
+<!-- /Slot Subgroup -->
+
+</div>
+<!-- Slot Select -->
+    </td>
+</tr>
+<tr class="portrait">
+    <td>
+<!-- Slot Select -->
+<div class="slot-select">
+
+<!-- Slot Subgroup -->
+<div class="slot-subgroup" slot_machine="4">
+    <div class="slotMachine dice-default">
+            <div class="slot slot1"></div>
+            <div class="slot slot2"></div>
+            <div class="slot slot3"></div>
+            <div class="slot slot4"></div>
+            <div class="slot slot5"></div>
+            <div class="slot slot6"></div>
+    </div>
+
+    <div class="slotMachine dice-default">
+            <div class="slot slot1"></div>
+            <div class="slot slot2"></div>
+            <div class="slot slot3"></div>
+            <div class="slot slot4"></div>
+            <div class="slot slot5"></div>
+            <div class="slot slot6"></div>
+    </div>    
+    <div class="slot-machine-score"></div>
+</div>
+<!-- /Slot Subgroup -->
+
+<!-- Slot Subgroup -->
+<div class="slot-subgroup" slot_machine="5">
     <div class="slotMachine dice-default">
             <div class="slot slot1"></div>
             <div class="slot slot2"></div>
@@ -202,5 +208,14 @@
 <div class='tap-message'>
     TAP TO STOP ROLLING
 </div>
+
+<div class="menu">
+    <img src="img/gear.png">
+</div>
+
+<dir class="menu-panel">
+    
+</dir>
+    
 	</body>
 </html>

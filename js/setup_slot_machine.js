@@ -1,4 +1,5 @@
 $(function(){
+var _machines = [];  
 var _setup_slot_machine = function (_slot_group) {
         
         if (typeof(_slot_group) === "string") {
@@ -16,7 +17,7 @@ var _setup_slot_machine = function (_slot_group) {
             active	: 0,
             delay	: 100
         };
-        var _machines = [];
+        
         var _machines_sound = [];
         var _end_sound = new Howl({
             urls: ['img/blop.mp3']
@@ -215,17 +216,30 @@ var _setup_slot_machine = function (_slot_group) {
         }
     };
     
+    var _last_ori = null;
     var _fix_layout = function () {
         var _total_height = window.innerHeight;
         var _total_width = window.innerWidth;
         
         //--------------------------
         
+        var _ori;
         if (_total_width > _total_height) {
+            _ori = "landscape";
             $("body").addClass("landscape");
         }
         else {
+            _ori = "portrait";
             $("body").removeClass("landscape");
+        }
+        
+        if (_ori !== _last_ori) {
+            if (_ori === "landscape") {
+                $("body").addClass("landscape");
+            }
+            else {
+                $("body").removeClass("landscape");
+            }
         }
         
         /*
@@ -246,7 +260,36 @@ var _setup_slot_machine = function (_slot_group) {
             
         }
         */
-        
+       
+        // 移動
+        if (_ori !== _last_ori) {
+            var _machines = $(".slot-subgroup");
+            if ($("body").hasClass("landscape")) {
+                var _td = $(".slot-group tr.landscape td");
+                //alert([_machines.filter("[slot_machine='0']").length, _td.length]);
+                _machines.filter("[slot_machine='0']").appendTo(_td.eq(0));
+                _machines.filter("[slot_machine='1']").appendTo(_td.eq(0));
+                _machines.filter("[slot_machine='2']").appendTo(_td.eq(1));
+                _machines.filter("[slot_machine='3']").appendTo(_td.eq(1));
+                _machines.filter("[slot_machine='4']").appendTo(_td.eq(2));
+                _machines.filter("[slot_machine='5']").appendTo(_td.eq(2));
+    //            _machines[1].appendTo(_td.eq(0));
+    //            _machines[2].appendTo(_td.eq(1));
+    //            _machines[3].appendTo(_td.eq(1));
+    //            _machines[4].appendTo(_td.eq(2));
+    //            _machines[5].appendTo(_td.eq(2));
+            }
+            else {
+                var _td = $(".slot-group tr.portrait td .slot-select");
+                //alert(_td.length);
+                _machines.filter("[slot_machine='0']").appendTo(_td.eq(0));
+                _machines.filter("[slot_machine='1']").appendTo(_td.eq(0));
+                _machines.filter("[slot_machine='2']").appendTo(_td.eq(1));
+                _machines.filter("[slot_machine='3']").appendTo(_td.eq(1));
+                _machines.filter("[slot_machine='4']").appendTo(_td.eq(2));
+                _machines.filter("[slot_machine='5']").appendTo(_td.eq(2));
+            }
+        }
         // ---------------------------------
         
         //if (_is_mobile()) {
@@ -269,9 +312,16 @@ var _setup_slot_machine = function (_slot_group) {
         
         //---------------------------------
         
-        var _orginal_height = $(".slotMachine .slot:first").height();
-        var _max_width = $(".slot-group .slot-subgroup:first").width();
-        var _max_height = $("td:first").height() - $(".slot-machine-score:first").height();
+        if (_ori === "portrait") {
+            var _orginal_height = $(".slotMachine .slot:first").height();
+            var _max_width = $(".slot-group .slot-subgroup:first").width();
+            var _max_height = $(".portrait td:first").height() - $(".slot-machine-score:first").height();
+        }
+        else {
+            var _orginal_height = $(".slotMachine .slot:first").height();
+            var _max_width = $(".slot-group .slot-subgroup:first").width();
+            var _max_height = $("td:first").height() - $(".slot-machine-score:first").height();
+        }
         
         //alert([_max_width, _max_height]);
         
@@ -319,6 +369,8 @@ var _setup_slot_machine = function (_slot_group) {
             //console.log(['int 2', $(".slotMachineContainer:first").css("margin-top")]);
             
         }
+        
+        _last_ori = _ori;
     };
     
     setTimeout(function () {

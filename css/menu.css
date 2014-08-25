@@ -1,0 +1,23 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2014/8/25, 下午 11:25:37
+    Author     : Pulipuli Chen <pulipuli.chen@gmail.com>
+*/
+
+.menu {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20%;
+    max-width: 128px;
+}
+
+.menu img {
+    cursor: pointer;
+    width: 100%;
+    height: auto;
+}
