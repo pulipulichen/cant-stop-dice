@@ -75,13 +75,23 @@ var _setup_slot_machine = function (_slot_group) {
                 });
                 
                 var _dot = Math.abs(6 - Math.abs(_score - 7));
-                _score = _score + '<div class="dot">';
+                _score = '<div class="number">' + _score + '</div><div class="dot">';
                 for (var _i = 0; _i < _dot; _i++) {
                     _score = _score + "&#46;";
                 }
                 _score = _score + '</div>';
                 
                 _score_result.html(_score);
+                
+                var _add_runner = $('<div class="runner add"><img src="img/add.png" /></div>');
+                var _close_dice = $('<div class="close-dice"></div>');
+                _score_result.find(".number")
+                        .prepend(_add_runner)
+                        .append(_close_dice);
+                
+                _add_runner.addClass("hide");
+                _close_dice.addClass("hide");
+                
                 _score_result.addClass("complete");
                 
                 _end_sound.play();
@@ -93,7 +103,10 @@ var _setup_slot_machine = function (_slot_group) {
         };
 
         var _results = _slot_group.find(".slot-machine-score");
-        _results.html('?<div class="dot hide">.</div>');
+        //var _default_result = '<div class="runner add hide"><img src="img/add.png" /></div>?<div class="close-dice hide"></div><div class="dot hide">.</div>';
+        //var _default_result = '<div class="runner add"><img src="img/add.png" /></div><div class="number">7</div><div class="close-dice"></div><div class="dot">......</div>';
+        var _default_result = '<div class="number">?</div><div class="dot hide">.</div>';
+        _results.html(_default_result);
         var _reset_score = function () {
             if (_results.eq(0).text().indexOf("?") === -1) {
                 //if (window.confirm("Do you want to reset score and roll dices again?") === false) {
@@ -107,7 +120,7 @@ var _setup_slot_machine = function (_slot_group) {
                 if (_e.text().indexOf("?") === -1) {
                     
                     _e.fadeOut("fast", function () {
-                        _e.html('?<div class="dot hide">.</div>');
+                        _e.html(_default_result);
                         _e.fadeIn("fast");
                     });
                 }

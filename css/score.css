@@ -1,0 +1,29 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2014/8/26, 上午 02:40:44
+    Author     : Pulipuli Chen <pulipuli.chen@gmail.com>
+*/
+.slot-machine-score .number {
+    display: inline-block;
+    height: 60px;
+}
+
+/*.dice-delete {
+    cursor: not-allowed;
+}*/
+.dice-closed .slot-machine-score .number {
+    text-decoration: line-through;
+    color: gray;
+}
+.dice-match .slot-machine-score .number {
+    color:red;
+}
+
+/*.runner-full {
+    cursor: not-allowed;
+}*/
+

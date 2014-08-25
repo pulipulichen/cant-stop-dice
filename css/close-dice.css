@@ -1,0 +1,31 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 2014/8/26, 上午 02:31:05
+    Author     : Pulipuli Chen <pulipuli.chen@gmail.com>
+*/
+
+.close-dice {
+    display: inline-block;
+    /*visibility: hidden;*/
+    width: 50px;
+    /*background-color: red;*/
+    height: 50px;
+    
+    background-image: url(../img/games_dice_delete.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    margin:0;
+    
+    position: relative;
+    top: 10px;
+    left: 15px;
+    cursor: pointer;
+}
+
+.close-dice.hide {
+    visibility: hidden;
+}

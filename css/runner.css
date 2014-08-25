@@ -11,7 +11,7 @@ and open the template in the editor.
     float: left;
 }
 
-#runner .runner {
+.runner {
     /*background-color: red;*/
     background-image: url(../img/user.png);
     width: 64px;
@@ -29,6 +29,9 @@ and open the template in the editor.
     margin-left: -25px;
     cursor: pointer;
     margin-top: 5px;
+    
+    background-position: center center;
+    background-repeat: no-repeat;
 }
 /*
 #runner .runner.two {
@@ -42,4 +45,21 @@ and open the template in the editor.
 
 #runner .runner.runner-clear img {
     margin-top: 20px;
+}
+
+.runner.add img {
+    margin-top: 20px;
+}
+
+.slot-machine-score .runner {
+    float: none;
+    /*visibility: hide;*/
+    display: inline-block;
+    width: 70px;
+    background-image: url(../img/user-frame.png);
+    /*visibility: hidden;*/
+}
+
+.slot-machine-score .runner.hide {
+    visibility: hidden;
 }
