@@ -21,7 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  * THE SOFTWARE.
  */
-
+;
 
 if (typeof($) === "object") {
 $(function () {
@@ -31,29 +31,29 @@ if (typeof($P) === "undefined") {
 }   //if (typeof($P) === "undefined") {
 
 $P.slot_machine_model = {
-    create: function (_template, _active, _callback) {
-        var _t = _template.clone();
+    create: function (_active) {
+        var _t = $(this.templete_selector).clone();
+        _t.removeClass("dice-template");
         
         var _option = this.slot_machine_option;
         if (_active !== undefined) {
             _option.active = _active;
         }
+        else {
+            _option.active = $P.random.get_int(0, 5);
+        }
+        
         setTimeout(function () {
-            _t.slotMachine(_option);
+            _t.find(".slotMachine").slotMachine(_option);
         }, 0);
         
         _t.sound = this.init_sound();
+        _t.start_roll = this.start_roll;
+        _t.stop_roll = this.stop_roll;
         
-        var _this = this;
-        _t.bind("slotstart", function () {
-            _this.start_event(_t);
-        });
-        _t.bind("slotcomplete", function () {
-            _this.complete_event(_t, _callback);
-        });
-        
-        return this;
+        return _t;
     },
+    templete_selector: ".slot-machine.dice-templete",
     // ----------------
     slot_machine_option: {
         active	: 0,
@@ -72,23 +72,30 @@ $P.slot_machine_model = {
     
     //-----------------
     running_classname: "running",
-    start_event: function (_machine) {
+    start_roll: function () {
+        var _machine = $(this);
         _machine.shuffle();
         _machine.sound.play();
         _machine.addClass(this.running_classname);
         _machine.removeAttr("active_index");
+        _machine.active_index = undefined;
     },
-    complete_event: function (_machine, _callback) {
+    stop_roll: function (_callback) {
+        var _machine = $(this);
         var _this = this;
         _machine.shuffle(1, function (_el, _active) {
             _machine.removeClass(_this.running_classname);
             _machine.attr("active_index", _active);
+            _machine.active_index = _active;
             _machine.sound.stop();
             
             if (typeof(_callback) === "function") {
                 _callback(_machine);
             }
         });
+    },
+    get_active_index: function () {
+        return this.active_index;
     }
 };
 
