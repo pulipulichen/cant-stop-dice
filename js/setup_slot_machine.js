@@ -26,7 +26,9 @@ var _setup_slot_machine = function (_slot_group) {
                 var _random = parseInt(Math.random() * 6 , 10);
                 _slot_machine_option.active = _random;
                 _machine = $(_machine);
+                _machine.attr("active_index", _random);
                 var _m = _machine.slotMachine(_slot_machine_option);
+                
                 _machines.push(_m);
                 
                 var _sound = new Howl({
@@ -60,8 +62,6 @@ var _setup_slot_machine = function (_slot_group) {
             //_score_result.text(_score);
             
             // 播放結束音效
-            var _index = $(".slotMachine").index(_el);
-            _machines_sound[_index].stop();
             
             if (_subgroup.find(".running").length === 0) {
                 var _score = 0;
@@ -164,6 +164,7 @@ var _setup_slot_machine = function (_slot_group) {
                             //var _machine = _machines[_index];
                             setTimeout(function () {
                                 _machine.shuffle(1, _onComplete);
+                                _machines_sound[_index].stop();
                             }, _interval * _index);
                         //}
                         //_start_flag = 4;
