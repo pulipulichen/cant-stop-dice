@@ -18,7 +18,7 @@ body {
         -o-user-select: none;
         user-select: none;         
         
-        cursor: pointer;
+        /*cursor: pointer;*/
     /*
     display: table;
     */
@@ -28,6 +28,13 @@ body {
     */
     width: 100%;
     overflow: hidden;
+}
+
+body.cursor-pointer {
+    cursor: pointer;
+}
+body.cursor-wait {
+    cursor: wait;
 }
 
 .slot-group {
@@ -131,12 +138,20 @@ body {
 .slot-subgroup {
     text-align: center;
     /*clear: both;*/
-    cursor: pointer;
+    cursor: default;
     /*float:left;*/
     display: inline-block;
     /*border: 1px solid red;*/
     
     /*display: table-cell;*/
+}
+
+.cursor-pointer .slot-subgroup {
+    cursor: pointer;
+}
+
+.cursor-wait .slot-subgroup {
+    cursor: wait;
 }
 
 tr.portrait .slot-subgroup {

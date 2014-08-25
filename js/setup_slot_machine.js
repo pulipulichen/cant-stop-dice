@@ -38,7 +38,7 @@ var _setup_slot_machine = function (_slot_group) {
                     loop: true
                 });
                 _machines_sound.push(_sound);
-            }, 100);
+            }, 0);
             
         });
         
@@ -148,6 +148,8 @@ var _setup_slot_machine = function (_slot_group) {
                 
                 setTimeout(function () {
                     $(".tap-message").fadeIn(function () {
+                        $("body").addClass("cursor-pointer");
+                        $("body").removeClass("cursor-wait");
                         _start_flag = 2;
                         
                     });
@@ -159,7 +161,8 @@ var _setup_slot_machine = function (_slot_group) {
                 _start_flag = 3;
                 
                 _vibrate();
-                
+                $("body").removeClass("cursor-pointer");
+                $("body").addClass("cursor-wait");
                 if ($(".tap-message:visible").length === 1) {
                     $(".tap-message").fadeOut(function () {
                         var _interval = 500;
@@ -175,6 +178,7 @@ var _setup_slot_machine = function (_slot_group) {
                         });
                         setTimeout(function () {
                             $("#trigger").fadeIn();
+                            $("body").removeClass("cursor-wait");
                         }, _interval * _machines.length);
                     });
                 }
@@ -207,12 +211,16 @@ var _setup_slot_machine = function (_slot_group) {
         };
 
         //$(".slot-group").click(_start_callback);
-        
+        $("body").addClass("cursor-pointer");
         $("#trigger").click(_start_callback);
+        $(".tap-message").click(function () {
+            $("#trigger").click();
+        });
         
         var _first = true;
         $(".slot-group").click(function () {
             if (_first === true || _start_flag === 2) {
+                $("body").removeClass("cursor-pointer");
                 $("#trigger").click();
                 _first = false;
             }

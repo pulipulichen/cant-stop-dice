@@ -4,6 +4,8 @@ $(function () {
     var _running = false;
     $("#trigger").click(function () {
         var _this = $(this);
+        $("body").removeClass("cursor-pointer");
+        $("body").addClass("cursor-wait");
         if (_running === false) {
             
             
@@ -16,7 +18,7 @@ $(function () {
             
             _this.fadeOut(function () {
                 _running = false;
-            _this.text("CONTINUE");
+                _this.text("CONTINUE");
             });
         }
         _first = false;
