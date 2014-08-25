@@ -13,7 +13,8 @@ and open the template in the editor.
     bottom: 0;
     right: 0;
     width: 20%;
-    max-width: 128px;
+    max-width: 100px;
+    z-index: 999;
 }
 
 .menu img {

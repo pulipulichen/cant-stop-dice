@@ -10,6 +10,7 @@
 		<link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
                 <link rel="stylesheet" href="css/cant_stop_dice.css" type="text/css" media="screen" />
                 <link rel="stylesheet" href="css/menu.css" type="text/css" media="screen" />
+                <link rel="stylesheet" href="css/controller.css" type="text/css" media="screen" />
 
 		<script type="text/javascript" src="lib/jquery.js"></script>
 		<!-- <script type="text/javascript" src="dist/jquery.slotmachine.min.js"></script> -->
@@ -18,6 +19,8 @@
                 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1, minimum-scale=1 user-scalable=no" />
         
                 <link href='img/favicon.png' rel='icon' type='image/png'/>
+                
+                <link rel="stylesheet" href="lib/jquery.mobile/jquery.mobile-1.4.3.min.css" />
         </head>
 
 	<body>
@@ -194,8 +197,43 @@
 <!-- Slot Select -->
     </td>
 </tr>
+    <tr class="portrait" style="border-top-width: 0">
+        <td height="50"></td>
+    </tr>
 </table>
 <!-- /Slot Group -->
+
+<div class='tap-message'>
+    TAP TO STOP ROLLING
+</div>
+
+<div class="controller">
+    <div id="trigger">GO</div>
+    
+</div>
+<div class="menu">
+    <a href="#popupLogin" data-rel="popup" data-position-to="window" class="" data-transition="pop">
+        <img src="img/gear.png">
+    </a>
+</div>
+
+<div data-role="popup" data-overlay-theme="b" id="popupLogin" data-theme="a" class="ui-corner-all menu-panel" style="width: 100%">
+    <ul data-role="listview" data-inset="true" style="min-width:300px;">
+        <li class="ui-field-contain">
+            <label for="flip2">Sound Enable:</label>
+            <select name="flip2" id="sound_enable" data-role="slider">
+                <option value="off">Off</option>
+                <option value="on" selected>On</option>
+            </select>
+        </li>
+        <li class="ui-field-contain" id="sound_volume_div">
+            <label for="slider2">Sound Volume:</label>
+            <input type="range" name="slider2" id="sound_volume" value="100" min="0" max="100" data-highlight="true">
+        </li>
+    </ul>
+</dir>
+
+
 
 <script src="js/shake.js"></script>
 <!--
@@ -204,18 +242,11 @@
 <script src="js/setup_shake.js"></script>
 
 <script src="js/setup_slot_machine.js"></script>
+<script src="js/menu.js"></script>
+<script src="js/controller.js"></script>
 
-<div class='tap-message'>
-    TAP TO STOP ROLLING
-</div>
+<script src="lib/jquery.mobile/jquery.mobile-1.4.3.min.js"></script>
 
-<div class="menu">
-    <img src="img/gear.png">
-</div>
-
-<dir class="menu-panel">
-    
-</dir>
     
 	</body>
 </html>

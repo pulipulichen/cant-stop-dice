@@ -1,7 +1,11 @@
 
+.ui-overlay-a, .ui-page-theme-a, .ui-page-theme-a .ui-panel-wrapper {
+    background-color: transparent !important;
+}
+
 body {
+    background-color: transparent !important;
     background-image: url(../img/bg.jpg);
-    
     /**
      * 阻止選擇
      * http://css-tricks.com/almanac/properties/u/user-select/

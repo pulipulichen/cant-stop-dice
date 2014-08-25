@@ -1,3 +1,7 @@
+
+        
+var _machines_sound = [];
+
 $(function(){
 var _machines = [];  
 var _setup_slot_machine = function (_slot_group) {
@@ -5,7 +9,6 @@ var _setup_slot_machine = function (_slot_group) {
         if (typeof(_slot_group) === "string") {
             _slot_group = $(_slot_group);
         }
-        
         var _vibrate = function () {
             if (typeof(navigator) === "object" 
                     && typeof(navigator.vibrate) === "function") {
@@ -17,8 +20,6 @@ var _setup_slot_machine = function (_slot_group) {
             active	: 0,
             delay	: 100
         };
-        
-        var _machines_sound = [];
         var _end_sound = new Howl({
             urls: ['img/blop.mp3']
         });
@@ -95,9 +96,9 @@ var _setup_slot_machine = function (_slot_group) {
         _results.html('?<div class="dot hide">.</div>');
         var _reset_score = function () {
             if (_results.eq(0).text().indexOf("?") === -1) {
-                if (window.confirm("Do you want to reset score and roll dices again?") === false) {
-                    return false;
-                }
+                //if (window.confirm("Do you want to reset score and roll dices again?") === false) {
+                //    return false;
+                //}
             }
             _results.each(function (_i, _e) {
                 _e = $(_e);
@@ -118,7 +119,7 @@ var _setup_slot_machine = function (_slot_group) {
 
         var _start_flag = 0;
         var _start_callback = function(){
-            
+            //$("#trigger").click();
             var _random = parseInt(Math.random() * 50, 10);
             //console.log(_random);
             var _interval = 75 + _random;
@@ -148,7 +149,9 @@ var _setup_slot_machine = function (_slot_group) {
                 setTimeout(function () {
                     $(".tap-message").fadeIn(function () {
                         _start_flag = 2;
+                        
                     });
+                    $("#trigger").fadeIn();
                 }, _machines.length * _interval);
             }
             else if (_start_flag === 2) {
@@ -170,6 +173,9 @@ var _setup_slot_machine = function (_slot_group) {
                         //}
                         //_start_flag = 4;
                         });
+                        setTimeout(function () {
+                            $("#trigger").fadeIn();
+                        }, _interval * _machines.length);
                     });
                 }
                     /*
@@ -200,7 +206,18 @@ var _setup_slot_machine = function (_slot_group) {
             }
         };
 
-        _slot_group.click(_start_callback);
+        //$(".slot-group").click(_start_callback);
+        
+        $("#trigger").click(_start_callback);
+        
+        var _first = true;
+        $(".slot-group").click(function () {
+            if (_first === true || _start_flag === 2) {
+                $("#trigger").click();
+                _first = false;
+            }
+        });
+        
     };  //var _setup_slot_machine = function (_slot_group) {
     
     //setTimeout(function () {
