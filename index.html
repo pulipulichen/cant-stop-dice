@@ -13,7 +13,7 @@
                 <link rel="stylesheet" href="css/controller.css" type="text/css" media="screen" />
                 <link rel="stylesheet" href="css/score.css" type="text/css" media="screen" />
                 <link rel="stylesheet" href="css/runner.css" type="text/css" media="screen" />
-                <link rel="stylesheet" href="css/close-dice.css" type="text/css" media="screen" />
+                <link rel="stylesheet" href="css/dice-close.css" type="text/css" media="screen" />
 
 		<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1, minimum-scale=1 user-scalable=no" />
         
@@ -239,6 +239,39 @@
             <label for="slider2">Sound Volume:</label>
             <input type="range" name="slider2" id="sound_volume" value="100" min="0" max="100" data-highlight="true">
         </li>
+        <li class="ui-field-contain" id="dice_close">
+            <label for="closed_dice">Closed Dices</label>
+            
+                <div class="dice-closed reset">
+                    <img src="img/close.png" />
+                </div>
+            <div class="container">
+                <!--
+                <div class="closed-dice">
+                    2
+                </div>
+                <div class="closed-dice">3</div>
+                <div class="closed-dice">4</div>
+                <div class="closed-dice">5</div>
+                <div class="closed-dice">6</div>
+                <div class="closed-dice">7</div>
+                <div class="closed-dice">8</div>
+                <div class="closed-dice">9</div>
+                <div class="closed-dice">10</div>
+                <div class="closed-dice">11</div>
+                <div class="closed-dice">12</div>
+                -->
+            <div>
+            
+            <!--
+            <div class="closed-dice">
+                    2
+                </div>
+            <div class="closed-dice">
+                    12
+                </div>
+            -->
+        </li>
     </ul>
 </dir>
 
@@ -258,6 +291,7 @@
 <script src="js/menu.js"></script>
 <script src="js/controller.js"></script>
 <script src="js/runner.js"></script>
+<script src="js/dice_close.js"></script>
 
 <script src="lib/jquery.mobile/jquery.mobile-1.4.3.min.js"></script>
 

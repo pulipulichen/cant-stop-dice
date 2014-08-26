@@ -67,7 +67,7 @@ $RUNNER = {
     is_in_runner: function (_score) {
         var _r = this.get_runners();
         for (var _i in _r) {
-            console.log([_score+"", _r[_i]]);
+            //console.log([_score+"", _r[_i]]);
             if (_score+"" === _r[_i]) {
                 return true;
             }
@@ -93,7 +93,7 @@ $RUNNER = {
             $('.slot-subgroup .runner.hide').removeClass("hide");
             $('.dice-match').removeClass("dice-match");
             var _r = this.get_runners();
-            console.log(_r);
+            //console.log(_r);
             $.each(_r, function (_i, _score) {
                 $('.slot-subgroup[score="'+_score+'"] .runner').addClass("hide");
                 $('.slot-subgroup[score="'+_score+'"]').addClass("dice-match");

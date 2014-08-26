@@ -29,3 +29,32 @@ and open the template in the editor.
 .close-dice.hide {
     visibility: hidden;
 }
+
+#dice_close.hide {
+    display: none;
+}
+
+#dice_close .closed-dice,
+#dice_close .reset{
+    width: 50px;
+    display: inline-block;
+    background-image: url(../img/games_dice_frame.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    text-align: center;
+    height: 36px;
+    width: 36px;
+    font-size: 20px;
+    font-family: Maggie-Moo;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+#dice_close .reset {
+    float:right;
+    display: none;
+}
+#dice_close .container {
+    /*max-width: 80%;*/
+    overflow-x: auto;
+}

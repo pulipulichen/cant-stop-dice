@@ -19,6 +19,10 @@ and open the template in the editor.
     text-decoration: line-through;
     color: gray;
 }
+.dice-closed .slot-machine-score .runner {
+    visibility: hidden;
+}
+
 .dice-match .slot-machine-score .number {
     color:red;
 }

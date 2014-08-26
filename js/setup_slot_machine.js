@@ -110,7 +110,15 @@ var _setup_slot_machine = function (_slot_group) {
                 
                 // --------------------
                 
-                _close_dice.addClass("hide");
+                if ($DICE_CLOSE.is_in_closed(_ori_score)) {
+                    _close_dice.addClass("hide");
+                    _score_result.parents(".slot-subgroup").addClass("dice-closed");
+                }
+                
+                _close_dice.click(function () {
+                    var _score = $(this).parents(".slot-subgroup").attr("score");
+                    $DICE_CLOSE.add_closed_dice(_score);
+                });
                 
                 // --------------------
                 
@@ -131,6 +139,7 @@ var _setup_slot_machine = function (_slot_group) {
         _results.html(_default_result);
         var _reset_score = function () {
             $(".dice-match").removeClass("dice-match");
+            $(".dice-closed").removeClass("dice-closed");
             
             if (_results.eq(0).text().indexOf("?") === -1) {
                 //if (window.confirm("Do you want to reset score and roll dices again?") === false) {
