@@ -8,7 +8,10 @@ and open the template in the editor.
     Author     : Pulipuli Chen <pulipuli.chen@gmail.com>
 */
 #runner {
-    float: left;
+    /*float: left;*/
+    display: inline-block;
+    position: relative;
+    top: 15px;
 }
 
 #runner.hide {

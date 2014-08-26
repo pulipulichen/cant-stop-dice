@@ -10,7 +10,8 @@ $(function () {
             
             
             _this.parent(".controller:first").fadeOut(function () {
-                _this.text("STOP");
+                //_this.text("STOP");
+                _this.html('<img src="img/playback_next.png" />');
                 _running = true;
             });
         }
@@ -18,7 +19,8 @@ $(function () {
             
             _this.parent(".controller:first").fadeOut(function () {
                 _running = false;
-                _this.text("CONTINUE");
+                //_this.text("CONTINUE");
+                _this.html('<img src="img/play_alt.png" />');
             });
         }
         _first = false;

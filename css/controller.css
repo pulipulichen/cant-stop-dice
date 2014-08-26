@@ -19,6 +19,9 @@ and open the template in the editor.
     font-family: Maggie-Moo;
     padding:10px;
     cursor: pointer;
+    white-space: nowrap;
+    max-width: calc(100% - 70px);
+    overflow-x: hidden;
 }
 
 .controller #restart.hide {
@@ -27,9 +30,25 @@ and open the template in the editor.
 
 .controller .trigger {
     display: inline-block;
+    /*font-size: 36px;*/
+}
+
+.controller #trigger {
+    position: relative;
+    top: 7px;
+    margin-bottom: 7px;
 }
 
 .controller #restart span {
     font-family: monospace;
     line-height: 36px;
+    position: relative;
+    top: -2px;
 }
+.controller #restart {
+    /*margin-left: -18px;*/
+}
+/*
+.landscape .controller .trigger {
+    font-size: 48px;
+}*/
