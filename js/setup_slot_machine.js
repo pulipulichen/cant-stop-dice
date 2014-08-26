@@ -138,8 +138,6 @@ var _setup_slot_machine = function (_slot_group) {
         var _default_result = '<div class="number">?</div><div class="dot hide">.</div>';
         _results.html(_default_result);
         var _reset_score = function () {
-            $(".dice-match").removeClass("dice-match");
-            $(".dice-closed").removeClass("dice-closed");
             
             if (_results.eq(0).text().indexOf("?") === -1) {
                 //if (window.confirm("Do you want to reset score and roll dices again?") === false) {
@@ -153,6 +151,9 @@ var _setup_slot_machine = function (_slot_group) {
                 if (_e.text().indexOf("?") === -1) {
                     
                     _e.fadeOut("fast", function () {
+                        
+                        _e.parents(".dice-match").removeClass("dice-match");
+                        _e.parents(".dice-closed").removeClass("dice-closed");
                         _e.html(_default_result);
                         _e.fadeIn("fast");
                     });
@@ -199,7 +200,8 @@ var _setup_slot_machine = function (_slot_group) {
                         _start_flag = 2;
                         
                     });
-                    $("#trigger").fadeIn();
+                    console.log($("#trigger").parents(".controller:first").length);
+                    $("#trigger").parent().fadeIn();
                 }, _machines.length * _interval);
             }
             else if (_start_flag === 2) {
@@ -223,7 +225,7 @@ var _setup_slot_machine = function (_slot_group) {
                         //_start_flag = 4;
                         });
                         setTimeout(function () {
-                            $("#trigger").fadeIn();
+                            $("#trigger").parent().fadeIn();
                             $("body").removeClass("cursor-wait");
                         }, _interval * _machines.length);
                     });

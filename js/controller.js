@@ -9,14 +9,14 @@ $(function () {
         if (_running === false) {
             
             
-            _this.fadeOut(function () {
+            _this.parent(".controller:first").fadeOut(function () {
                 _this.text("STOP");
                 _running = true;
             });
         }
         else {
             
-            _this.fadeOut(function () {
+            _this.parent(".controller:first").fadeOut(function () {
                 _running = false;
                 _this.text("CONTINUE");
             });

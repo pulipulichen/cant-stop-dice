@@ -6,20 +6,25 @@
 $DICE_CLOSE = {
     init_cleaner: function () {
         var _this = this;
-        $("#dice_close .reset").click(function () {
+        //$("#dice_close .reset").click(function () {
+        $("#restart").click(function () {
             //_this.hide_slot_runner();
             _this.reset();
+            $(".runner.runner-clear").click();
+            $("#trigger").click();
         });
         
-        setTimeout(function () {
-            $(".menu a").click();
-        }, 1000);
+//        setTimeout(function () {
+//            $(".menu a").click();
+//        }, 1000);
+        
         
     },
     reset: function () {
         this.empty_closed_dices();
         $('.slot-subgroup .close-dice.hide').removeClass("hide");
         $('.slot-subgroup').removeClass("dice-closed");
+        $("#restart").addClass("hide");
     },
     check_number: function () {
         return $("#dice_close .closed-dice:not(.reset)").length;
@@ -55,6 +60,8 @@ $DICE_CLOSE = {
         //for (var _i = 0; _i < 6; _i++) {
         //    $("#dice_close .container").append(_dice.clone());
         //}
+        
+        $("#restart").removeClass("hide");
         
         this.hide_slot_dice(_score);
     },

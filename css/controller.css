@@ -20,3 +20,16 @@ and open the template in the editor.
     padding:10px;
     cursor: pointer;
 }
+
+.controller #restart.hide {
+    display: none;
+}
+
+.controller .trigger {
+    display: inline-block;
+}
+
+.controller #restart span {
+    font-family: monospace;
+    line-height: 36px;
+}
