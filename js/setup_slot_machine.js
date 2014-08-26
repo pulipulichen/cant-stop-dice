@@ -74,12 +74,16 @@ var _setup_slot_machine = function (_slot_group) {
                     _score = _score + _ai;
                 });
                 
+                var _ori_score = _score;
+                _score_result.parents(".slot-subgroup").attr("score", _score);
+                
                 var _dot = Math.abs(6 - Math.abs(_score - 7));
                 _score = '<div class="number">' + _score + '</div><div class="dot">';
                 for (var _i = 0; _i < _dot; _i++) {
                     _score = _score + "&#46;";
                 }
                 _score = _score + '</div>';
+                
                 
                 _score_result.html(_score);
                 
@@ -89,8 +93,26 @@ var _setup_slot_machine = function (_slot_group) {
                         .prepend(_add_runner)
                         .append(_close_dice);
                 
-                _add_runner.addClass("hide");
+                // --------------------
+                
+                if ($RUNNER.is_in_runner(_ori_score)) {
+                    _score_result.parents(".slot-subgroup").addClass("dice-match");
+                }
+                
+                _add_runner.click(function () {
+                    var _score = $(this).parents(".slot-subgroup").attr("score");
+                    $RUNNER.add_runner(_score);
+                });
+                
+                if ($RUNNER.is_runner_full()) {
+                    _add_runner.addClass("hide");
+                }
+                
+                // --------------------
+                
                 _close_dice.addClass("hide");
+                
+                // --------------------
                 
                 _score_result.addClass("complete");
                 
@@ -108,6 +130,8 @@ var _setup_slot_machine = function (_slot_group) {
         var _default_result = '<div class="number">?</div><div class="dot hide">.</div>';
         _results.html(_default_result);
         var _reset_score = function () {
+            $(".dice-match").removeClass("dice-match");
+            
             if (_results.eq(0).text().indexOf("?") === -1) {
                 //if (window.confirm("Do you want to reset score and roll dices again?") === false) {
                 //    return false;

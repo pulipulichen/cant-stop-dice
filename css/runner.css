@@ -11,6 +11,10 @@ and open the template in the editor.
     float: left;
 }
 
+#runner.hide {
+    display:none;
+}
+
 .runner {
     /*background-color: red;*/
     background-image: url(../img/user.png);
