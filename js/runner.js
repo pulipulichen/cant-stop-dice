@@ -40,12 +40,14 @@ $RUNNER = {
                 .html(_score)
                 .attr("score", _score);
         var _this = this;
+        
+        
         _runner.click(function () {
             _this.remove_runner($(this).attr("score"));
         });
         $("#runner").removeClass("hide")
-                .append(_runner);
-        
+            .append(_runner);
+        $('.slot-subgroup[score="'+_score+'"]').addClass("dice-match");
         
         if (this.is_runner_full()) {
             this.hide_slot_runner();
