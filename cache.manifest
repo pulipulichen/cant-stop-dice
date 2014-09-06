@@ -1,12 +1,17 @@
 CACHE MANIFEST
 
-# Updated on: 2012-11-24 21:44:18
+# Updated on: 2012-11-24 21:44:19
 
 css/reset.css
 css/style.css
 css/cant_stop_dice.css
-js/jquery.js
-src/jquery.slotmachine.js
+css/runner.css
+css/puli-grid.css
+css/menu.css
+css/dice-close.css
+css/controller.css
+lib/jquery.js
+lib/jquery.slotmachine.js
 img/favicon.png
 js/shake.js
 js/setup_shake.js
@@ -19,6 +24,34 @@ img/dice_default_3.png
 img/dice_default_4.png
 img/dice_default_5.png
 img/dice_default_6.png
+font/Maggie-Moo.otf
+img/add.png
+img/blop.mp3
+img/close.png
+img/games_dice_delete.png
+img/games_dice_frame.png
+img/gear.png
+img/play_alt.png
+img/playback_next.png
+img/restart.png
+img/shake_and_roll_dice.mp3
+img/user-frame.png
+img/user.png
+js/controller.js
+js/dice_close.js
+js/init_slot_machine.js
+js/leecrossley_shake.js
+js/menu.js
+js/phonegap-sound.js
+js/puli-grid.js
+js/puli-random.js
+js/require_js_config.js
+js/runner.js
+js/slot_machine_group_model.js
+js/slot_machine_model.js
+js/slot_machines_collection_model.js
+lib/howler.min.js
+lib/vibration.js
 
 NETWORK:
 *
