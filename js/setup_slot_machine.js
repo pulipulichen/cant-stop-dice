@@ -1,6 +1,7 @@
 
         
-var _machines_sound = [];
+_machines_sound = [];
+_end_sound = null;
 
 $(function(){
 var _machines = [];  
@@ -20,7 +21,7 @@ var _setup_slot_machine = function (_slot_group) {
             active	: 0,
             delay	: 100
         };
-        var _end_sound = new Howl({
+        _end_sound = new Howl({
             urls: ['img/blop.mp3']
         });
         _slot_group.find(".slotMachine").each(function (_index, _machine) {

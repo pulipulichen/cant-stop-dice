@@ -16,7 +16,6 @@ img/favicon.png
 js/shake.js
 js/setup_shake.js
 js/setup_slot_machine.js
-src/jquery.slotmachine.js
 img/bg.jpg
 img/dice_default_1.png
 img/dice_default_2.png
