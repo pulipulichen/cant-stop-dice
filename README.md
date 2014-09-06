@@ -2,7 +2,10 @@ Can't Stop Dices
 ==============
 
 製作欲罷不能(Can't Stop)桌遊用的擲骰APP
-專案網站：https://github.com/pulipulichen/cant-stop-dice
+
+- 專案網站：https://github.com/pulipulichen/cant-stop-dice
+- 線上展示：https://dl.dropboxusercontent.com/u/717137/20140906-cant-stop-dices/index.html
+
 
 ------------
 
@@ -19,6 +22,8 @@ Related Works
 - [立體骰子按鈕圖示](http://findicons.com/icon/226957/package_games_board?id=227714)：GNU/GPL授權
 - [骰子框架圖示](http://findicons.com/icon/568262/dice?id=569675) ：免費使用，作者網站是 [visualpharm](http://www.visualpharm.com/)
 - [木頭桌面背景](http://pichost.me/1836436/)：非商業目的可自由使用
+還有許多圖示來自於[Find Icons圖示搜尋引擎](http://findicons.com/)。
+
 
 使用的聲音素材包括了：
 - [骰子滾動聲音](http://soundbible.com/182-Shake-And-Roll-Dice.html)：可以商業使用
